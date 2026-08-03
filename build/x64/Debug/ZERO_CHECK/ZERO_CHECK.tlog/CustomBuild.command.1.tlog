@@ -1,0 +1,10 @@
+^E:\C\OSM_TO_GLB_CPP\BUILD\CMAKEFILES\9F4568C1D657ADA621E1BA878C3E4136\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/C/osm_to_glb_cpp -BE:/C/osm_to_glb_cpp/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/C/osm_to_glb_cpp/build/osm_to_glb_cpp.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

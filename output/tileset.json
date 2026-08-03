@@ -1,0 +1,16 @@
+{
+  "asset": {
+    "version": "1.0"
+  },
+  "geometricError": 500,
+  "root": {
+    "boundingVolume": {
+      "region": [1.3472677753, 0.4984602181, 1.3476320988, 0.4986540351, 0, 32.0000000000]
+    },
+    "geometricError": 0,
+    "refine": "ADD",
+    "content": {
+      "uri": "tile.b3dm"
+    }
+  }
+}

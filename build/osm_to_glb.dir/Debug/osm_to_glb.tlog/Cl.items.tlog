@@ -1,0 +1,7 @@
+E:\C\osm_to_glb_cpp\src\main.cpp;E:\C\osm_to_glb_cpp\build\osm_to_glb.dir\Debug\main.obj
+E:\C\osm_to_glb_cpp\src\OsmReader.cpp;E:\C\osm_to_glb_cpp\build\osm_to_glb.dir\Debug\OsmReader.obj
+E:\C\osm_to_glb_cpp\src\CoordinateConverter.cpp;E:\C\osm_to_glb_cpp\build\osm_to_glb.dir\Debug\CoordinateConverter.obj
+E:\C\osm_to_glb_cpp\src\MeshBuilder.cpp;E:\C\osm_to_glb_cpp\build\osm_to_glb.dir\Debug\MeshBuilder.obj
+E:\C\osm_to_glb_cpp\src\OBJWriter.cpp;E:\C\osm_to_glb_cpp\build\osm_to_glb.dir\Debug\OBJWriter.obj
+E:\C\osm_to_glb_cpp\src\B3DMWriter.cpp;E:\C\osm_to_glb_cpp\build\osm_to_glb.dir\Debug\B3DMWriter.obj
+E:\C\osm_to_glb_cpp\src\TilesetWriter.cpp;E:\C\osm_to_glb_cpp\build\osm_to_glb.dir\Debug\TilesetWriter.obj

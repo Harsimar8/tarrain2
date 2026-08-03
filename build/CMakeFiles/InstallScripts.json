@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"E:/C/osm_to_glb_cpp/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
