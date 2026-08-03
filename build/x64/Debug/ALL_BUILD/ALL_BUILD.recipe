@@ -2,13 +2,13 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\C\osm_to_glb_cpp\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\C\osm_to_glb_cpp\build\Debug\osm_to_glb.exe</FullPath>
+      <FullPath>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\Debug\osm_to_glb.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\C\osm_to_glb_cpp\build\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\x64\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

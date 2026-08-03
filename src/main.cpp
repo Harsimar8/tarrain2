@@ -1,220 +1,379 @@
-#include <iostream>
-#include <vector>
-#include "OsmReader.h"
-#include "OBJWriter.h"
-#include "CoordinateConverter.h"
-#include "MeshBuilder.h"
-#include "B3DMWriter.h"
+// #include <iostream>
+// #include <vector>
+// #include "OsmReader.h"
+// #include "OBJWriter.h"
+// #include "CoordinateConverter.h"
+// #include "MeshBuilder.h"
 // #include "B3DMWriter.h"
- #include "TilesetWriter.h"
+// // #include "B3DMWriter.h"
+//  #include "TilesetWriter.h"
 
 
-int main()
-{
-    OsmReader reader;
+// int main()
+// {
+//     OsmReader reader;
 
-    if (!reader.load("E:/C/osm_to_glb_cpp/data/map.osm"))
-    {
-        std::cout << "Cannot open OSM file" << std::endl;
-        return 1;
-    }
+//     if (!reader.load("../data/in.osm"))
+//     {
+//         std::cout << "Cannot open OSM file" << std::endl;
+//         return 1;
+//     }
 
-    const auto &nodes = reader.getNodes();
-    const auto &buildings = reader.getBuildings();
+//     const auto &nodes = reader.getNodes();
+//     const auto &buildings = reader.getBuildings();
 
-    if (buildings.empty())
-    {
-        std::cout << "No buildings found" << std::endl;
-        return 0;
-    }
+//     if (buildings.empty())
+//     {
+//         std::cout << "No buildings found" << std::endl;
+//         return 0;
+//     }
 
-    // Use the first building's first node as the global origin
-    const Building &firstBuilding = buildings[0];
-    const Node &globalOrigin = nodes.at(firstBuilding.nodeIds[0]);
+//     // Use the first building's first node as the global origin
+//     // Compute the center of all OSM nodes (better global origin)
 
-    CoordinateConverter converter(
-        globalOrigin.lat,
-        globalOrigin.lon);
+// // Compute bounding box center (Method 2)
 
-    std::cout << "Buildings: "
-              << buildings.size()
-              << std::endl;
+// double minLat =  1e9;
+// double maxLat = -1e9;
+// double minLon =  1e9;
+// double maxLon = -1e9;
+
+// for (const auto &pair : nodes)
+// {
+//     const Node &n = pair.second;
+
+//     if (n.lat < minLat) minLat = n.lat;
+//     if (n.lat > maxLat) maxLat = n.lat;
+
+//     if (n.lon < minLon) minLon = n.lon;
+//     if (n.lon > maxLon) maxLon = n.lon;
+// }
+
+// Node globalOrigin;
+// globalOrigin.lat = (minLat + maxLat) / 2.0;
+// globalOrigin.lon = (minLon + maxLon) / 2.0;
+
+// CoordinateConverter converter(
+//     globalOrigin.lat,
+//     globalOrigin.lon
+// );
+
+// std::cout << "Bounding box origin: "
+//           << globalOrigin.lat << ", "
+//           << globalOrigin.lon << std::endl;
+
+// std::cout << "Buildings found: "
+//           << buildings.size()
+//           << std::endl;
+
+// for (int i = 0; i < 5 && i < buildings.size(); i++)
+// {
+//     std::cout << "Building " << i
+//               << " height=" << buildings[i].height
+//               << " levels=" << buildings[i].levels
+//               << std::endl;
+// }
+
 
     
 
-    MeshBuilder mesh;
+//     MeshBuilder mesh;
    
-    for (const Building &b : buildings)
-    {
+//     for (const Building &b : buildings)
+//     {
 
-        if (b.nodeIds.size() < 3)
-            continue;
+//         if (b.nodeIds.size() < 3)
+//             continue;
 
-        std::vector<Point2D> polygon;
+//         std::vector<Point2D> polygon;
 
-        for (long long id : b.nodeIds)
-        {
-            auto it = nodes.find(id);
+//         for (long long id : b.nodeIds)
+//         {
+//             auto it = nodes.find(id);
 
-            if (it == nodes.end())
-                continue;
+//             if (it == nodes.end())
+//                 continue;
 
-            polygon.push_back(
-                converter.toLocal(it->second.lat, it->second.lon));
-        }
+//             polygon.push_back(
+//                 converter.toLocal(it->second.lat, it->second.lon));
+//         }
 
-        if (polygon.size() < 3)
-        {
-            std::cout << "Skipping invalid building with "
-                      << polygon.size()
-                      << " points"
-                      << std::endl;
-            continue;
-        }
+//         if (polygon.size() < 3)
+//         {
+//             std::cout << "Skipping invalid building with "
+//                       << polygon.size()
+//                       << " points"
+//                       << std::endl;
+//             continue;
+//         }
 
-        std::cout << "Building polygon points: "
-                  << polygon.size()
-                  << std::endl;
+//         std::cout << "Building polygon points: "
+//                   << polygon.size()
+//                   << std::endl;
 
-        mesh.appendExtrudedBuilding(
-            polygon,
-            12.0);
+//         double buildingHeight;
 
-        std::cout << "Total vertices: "
-                  << mesh.getVertices().size()
-                  << std::endl;
+// if (b.height > 0)
+// {
+//     // Use the exact OSM height
+//     buildingHeight = b.height;
+// }
+// else if (b.levels > 0)
+// {
+//     // Estimate from number of floors
+//     buildingHeight = b.levels * 3.0;
+// }
+// else
+// {
+//     // Default when no information exists
+//     buildingHeight = 10.0;
+// }
 
-        std::cout << "Total triangles: "
-                  << mesh.getTriangles().size()
-                  << std::endl;
-    }
+// mesh.appendExtrudedBuilding(
+//     polygon,
+//     buildingHeight);
 
-    float minX = 1e9f;
-    float minY = 1e9f;
-    float minZ = 1e9f;
+// std::cout << "Building height used: "
+//           << buildingHeight
+//           << " m"
+//           << std::endl;
 
-    for (const auto &v : mesh.getVertices())
-    {
-        if (v.x < minX)
-            minX = v.x;
-        if (v.y < minY)
-            minY = v.y;
-        if (v.z < minZ)
-            minZ = v.z;
-    }
+//         std::cout << "Total vertices: "
+//                   << mesh.getVertices().size()
+//                   << std::endl;
 
-    std::cout << "Minimum coordinates: "
-              << minX << " "
-              << minY << " "
-              << minZ
-              << std::endl;
+//         std::cout << "Total triangles: "
+//                   << mesh.getTriangles().size()
+//                   << std::endl;
+//     }
 
-    OBJWriter objWriter;
+//     float minX = 1e9f;
+//     float minY = 1e9f;
+//     float minZ = 1e9f;
+ 
 
-    if (objWriter.writeOBJ(mesh, "E:/C/osm_to_glb_cpp/output/delhi_block.obj"))
-    {
-        std::cout << "Delhi OBJ written successfully!" << std::endl;
-    }
+//     float maxX = -1e9f;
+// float maxY = -1e9f;
+// float maxZ = -1e9f;
+
+
+
+//     for (const auto &v : mesh.getVertices())
+//     {
+//         if (v.x < minX)
+//             minX = v.x;
+//         if (v.y < minY)
+//             minY = v.y;
+//         if (v.z < minZ)
+//             minZ = v.z;
+
+
+//             if (v.x > maxX) maxX = v.x;
+//     if (v.y > maxY) maxY = v.y;
+//     if (v.z > maxZ) maxZ = v.z;
+//     }
+
+//     std::cout << "Minimum coordinates: "
+//               << minX << " "
+//               << minY << " "
+//               << minZ
+//               << std::endl;
+
+
+//     return 0;          
+
+// //     OBJWriter objWriter;
+
+// //     if (objWriter.writeOBJ(mesh, "../output/delhi_block.obj"))
+// // {
+// //     std::cout << "Delhi OBJ written successfully!" << std::endl;
+// // }
+// // else
+// // {
+// //     std::cout << "Failed to write Delhi OBJ." << std::endl;
+// // }
+
+
+
+
+// }
+
+
+
+#include <iostream>
+#include <vector>
+#include "OsmReader.h"
+#include "CoordinateConverter.h"
+#include "MeshBuilder.h"
+#include "OBJWriter.h"
+
+int main()
+{
+OsmReader reader;
+
+
+if (!reader.load("../data/in.osm"))
+{
+    std::cout << "Cannot open OSM file" << std::endl;
+    return 1;
+}
+
+const auto &nodes = reader.getNodes();
+const auto &buildings = reader.getBuildings();
+
+if (buildings.empty())
+{
+    std::cout << "No buildings found" << std::endl;
+    return 0;
+}
+
+// -------- Bounding-box origin (Method 2) --------
+
+double minLat = 1e9;
+double maxLat = -1e9;
+double minLon = 1e9;
+double maxLon = -1e9;
+
+for (const auto &pair : nodes)
+{
+    const Node &n = pair.second;
+
+    if (n.lat < minLat) minLat = n.lat;
+    if (n.lat > maxLat) maxLat = n.lat;
+
+    if (n.lon < minLon) minLon = n.lon;
+    if (n.lon > maxLon) maxLon = n.lon;
+}
+
+Node globalOrigin;
+globalOrigin.lat = (minLat + maxLat) / 2.0;
+globalOrigin.lon = (minLon + maxLon) / 2.0;
+
+CoordinateConverter converter(globalOrigin.lat, globalOrigin.lon);
+
+std::cout << "Bounding box origin: "
+          << globalOrigin.lat << ", "
+          << globalOrigin.lon << std::endl;
+
+std::cout << "Buildings found: "
+          << buildings.size()
+          << std::endl;
+
+// -------- Print only first 5 buildings --------
+
+std::cout << "\\nFirst 5 buildings:" << std::endl;
+
+for (int i = 0; i < 5 && i < buildings.size(); i++)
+{
+    double finalHeight;
+
+    if (buildings[i].height > 0)
+        finalHeight = buildings[i].height;
+    else if (buildings[i].levels > 0)
+        finalHeight = buildings[i].levels * 3.0;
     else
-    {
-        std::cout << "Failed to write Delhi OBJ." << std::endl;
-    }
+        finalHeight = 10.0;
 
-    std::cout << "Vertices: "
-              << mesh.getVertices().size()
-              << std::endl;
+    std::cout
+        << "Building " << i
+        << " | OSM height=" << buildings[i].height
+        << " | levels=" << buildings[i].levels
+        << " | final height=" << finalHeight << " m"
+        << std::endl;
+}
 
-    std::cout << "Triangles: "
-              << mesh.getTriangles().size()
-              << std::endl;
+// -------- Build mesh for all buildings --------
 
-    int i = 0;
+MeshBuilder mesh;
 
-    for (const auto &v : mesh.getVertices())
-    {
-        std::cout
-            << "V "
-            << i++
-            << " : "
-            << v.x
-            << " "
-            << v.y
-            << " "
-            << v.z
-            << std::endl;
-
-        if (i == 10)
-            break;
-    }
-
-
-
-
-
-
-// // Write B3DM
-// B3DMWriter b3dm;
-
-// if (b3dm.writeB3DM(
-//         "E:/C/osm_to_glb_cpp/output/delhi_block.glb",
-//         "E:/C/osm_to_glb_cpp/output/tile.b3dm"
-//     ))
-// {
-//     std::cout << "B3DM written successfully!" << std::endl;
-// }
-// else
-// {
-//     std::cout << "Failed to write B3DM." << std::endl;
-// }
-
-// TilesetWriter tileset;
-
-// if (tileset.writeTileset(
-//         mesh,
-//         globalOrigin.lat,
-//         globalOrigin.lon,
-//         "E:/C/osm_to_glb_cpp/output/tileset.json"
-//     ))
-// {
-//     std::cout << "Tileset written successfully!" << std::endl;
-// }
-// else
-// {
-//     std::cout << "Failed to write tileset." << std::endl;
-// }
-
-
-B3DMWriter b3dm;
-
-if (b3dm.writeB3DM(
-        "E:/C/osm_to_glb_cpp/output/one.glb",
-        "E:/C/osm_to_glb_cpp/output/tile.b3dm"
-    ))
+for (const Building &b : buildings)
 {
-    std::cout << "B3DM written successfully!" << std::endl;
+    if (b.nodeIds.size() < 3)
+        continue;
+
+    std::vector<Point2D> polygon;
+
+    for (long long id : b.nodeIds)
+    {
+        auto it = nodes.find(id);
+
+        if (it == nodes.end())
+            continue;
+
+        polygon.push_back(
+            converter.toLocal(it->second.lat, it->second.lon));
+    }
+
+    if (polygon.size() < 3)
+        continue;
+
+    double buildingHeight;
+
+    if (b.height > 0)
+        buildingHeight = b.height;
+    else if (b.levels > 0)
+        buildingHeight = b.levels * 3.0;
+    else
+        buildingHeight = 10.0;
+
+    mesh.appendExtrudedBuilding(
+        polygon,
+        buildingHeight);
+}
+
+// -------- Mesh summary --------
+
+float minX = 1e9f;
+float minY = 1e9f;
+float minZ = 1e9f;
+
+float maxX = -1e9f;
+float maxY = -1e9f;
+float maxZ = -1e9f;
+
+for (const auto &v : mesh.getVertices())
+{
+    if (v.x < minX) minX = v.x;
+    if (v.y < minY) minY = v.y;
+    if (v.z < minZ) minZ = v.z;
+
+    if (v.x > maxX) maxX = v.x;
+    if (v.y > maxY) maxY = v.y;
+    if (v.z > maxZ) maxZ = v.z;
+}
+
+
+
+std::cout << "Minimum coordinates: "
+          << minX << " "
+          << minY << " "
+          << minZ
+          << std::endl;
+
+OBJWriter objWriter;
+
+if (objWriter.writeOBJ(mesh, "../output/delhi_block.obj"))
+{
+    std::cout << "\nOBJ file written successfully!" << std::endl;
+    std::cout << "File: ../output/delhi_block.obj" << std::endl;
 }
 else
 {
-    std::cout << "Failed to write B3DM." << std::endl;
+    std::cout << "\nFailed to write OBJ file!" << std::endl;
 }
 
-TilesetWriter tileset;
+std::cout << "\nMesh generation complete" << std::endl;
+std::cout << "Vertices  : " << mesh.getVertices().size() << std::endl;
+std::cout << "Triangles : " << mesh.getTriangles().size() << std::endl;
+std::cout << "Bounds X  : " << minX << " to " << maxX << std::endl;
+std::cout << "Bounds Y  : " << minY << " to " << maxY << std::endl;
+std::cout << "Bounds Z  : " << minZ << " to " << maxZ << std::endl;
 
-if (tileset.writeTileset(
-        mesh,
-        globalOrigin.lat,
-        globalOrigin.lon,
-        "E:/C/osm_to_glb_cpp/output/tileset.json"
-    ))
-{
-    std::cout << "Tileset written successfully!" << std::endl;
-}
-else
-{
-    std::cout << "Failed to write tileset." << std::endl;
-}
 
 return 0;
 
-   
+
+
+
 }
+

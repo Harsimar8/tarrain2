@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(osm_to_glb_cpp)
+project(flower)
 
 set(CMAKE_CXX_STANDARD 17)
 

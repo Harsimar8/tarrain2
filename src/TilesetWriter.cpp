@@ -1,5 +1,5 @@
 #include "TilesetWriter.h"
-
+#include <iostream>
 #include <fstream>
 #include <cmath>
 #include <iomanip>
@@ -84,6 +84,14 @@ out << "  }\n";
 out << "}\n";
 
 out.close();
+std::cout << "\n========== STEP 4 : TILESET ==========" << std::endl;
+std::cout << "West  : " << west << std::endl;
+std::cout << "South : " << south << std::endl;
+std::cout << "East  : " << east << std::endl;
+std::cout << "North : " << north << std::endl;
+std::cout << "Max Z : " << maxZ << std::endl;
+std::cout << "Tileset file : " << filename << std::endl;
+std::cout << "=====================================\n" << std::endl;
 
 return true;
 

@@ -72,12 +72,30 @@ for (int i = 0; i < n; i++)
     triangles.push_back({g2, r2, r1});
 }
 
-for (int i = 1; i < n - 1; i++)
+// Roof triangulation using centroid (prevents roof spikes)
+
+Vertex center = {0, 0, (float)height};
+
+for (const auto& p : clean)
 {
+    center.x += (float)p.x;
+    center.y += (float)p.y;
+}
+
+center.x /= n;
+center.y /= n;
+
+int centerIndex = (int)vertices.size();
+vertices.push_back(center);
+
+for (int i = 0; i < n; i++)
+{
+    int next = (i + 1) % n;
+
     triangles.push_back({
-        offset + n,
+        centerIndex,
         offset + n + i,
-        offset + n + i + 1
+        offset + n + next
     });
 }
 

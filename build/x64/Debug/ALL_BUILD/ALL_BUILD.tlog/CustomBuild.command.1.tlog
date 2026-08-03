@@ -1,6 +1,6 @@
-^E:\C\OSM_TO_GLB_CPP\CMAKELISTS.TXT
+^C:\USERS\HARSIMAR KAUR\DESKTOP\OSM_TO_TILES\FLOWER\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SE:/C/osm_to_glb_cpp -BE:/C/osm_to_glb_cpp/build --check-stamp-file E:/C/osm_to_glb_cpp/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

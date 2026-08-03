@@ -14,6 +14,9 @@ struct Node
 struct Building
 {
     std::vector<long long> nodeIds;
+
+    double height = -1.0;   // height in meters
+    int levels = -1;        // number of floors
 };
 
 class OsmReader

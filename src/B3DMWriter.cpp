@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <cstdint>
+#include <iostream>
 
 bool B3DMWriter::writeB3DM(
 const std::string& glbFile,
@@ -55,6 +56,14 @@ out.write(featureTable.data(), featureTable.size());
 out.write(glb.data(), glb.size());
 
 out.close();
+
+std::cout << "\n========== STEP 3 : GLB -> B3DM ==========" << std::endl;
+std::cout << "Input GLB        : " << glbFile << std::endl;
+std::cout << "GLB size         : " << glb.size() << " bytes" << std::endl;
+std::cout << "Feature table    : " << featureTable.size() << " bytes" << std::endl;
+std::cout << "B3DM byteLength  : " << byteLength << std::endl;
+std::cout << "Output B3DM      : " << b3dmFile << std::endl;
+std::cout << "==========================================\n" << std::endl;
 
 return true;
 
