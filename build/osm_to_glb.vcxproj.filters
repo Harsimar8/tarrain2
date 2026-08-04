@@ -16,12 +16,6 @@
     <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\OBJWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\B3DMWriter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\TilesetWriter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\CMakeLists.txt" />

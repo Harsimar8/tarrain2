@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-
+#include "B3DMWriter.h"
+#include "TilesetWriter.h"
 #include "OsmReader.h"
 #include "CoordinateConverter.h"
 #include "MeshBuilder.h"
@@ -75,7 +76,7 @@ int exportedCount = 0;
 
 for (const Building &b : buildings)
 {
-    if (exportedCount >= 100)
+    if (exportedCount >= 1000)
         break;
 
 
@@ -135,13 +136,65 @@ std::cout
     << exportedCount
     << std::endl;
 
+
+    // ---------- Generate B3DM ----------
+
+B3DMWriter b3dmWriter;
+
+
+bool b3dmOK =
+b3dmWriter.writeB3DM(
+    "../data/f1000.glb",
+    "../output/tile.b3dm"
+);
+
+
+if(b3dmOK)
+{
+    std::cout
+    << "B3DM created\n";
+}
+else
+{
+    std::cout
+    << "B3DM failed\n";
+}
+
+
+
+// ---------- Generate tileset.json ----------
+
+TilesetWriter tilesWriter;
+
+
+bool tilesOK =
+tilesWriter.writeTileset(
+    mesh,
+    firstNode->second.lat,
+    firstNode->second.lon,
+    "../output/tileset.json"
+);
+
+
+
+if(tilesOK)
+{
+    std::cout
+    << "tileset.json created\n";
+}
+else
+{
+    std::cout
+    << "tileset failed\n";
+}
+
     // ---------- Export OBJ ----------
     OBJWriter writer;
 
-    if (writer.writeOBJ(mesh, "../output/building30_exact.obj"))
+    if (writer.writeOBJ(mesh, "../output/building1000_exact.obj"))
     {
         std::cout << "\nOBJ written successfully!" << std::endl;
-        std::cout << "File: ../output/building0_exact.obj" << std::endl;
+        std::cout << "File: ../output/building1000_exact.obj" << std::endl;
     }
     else
     {

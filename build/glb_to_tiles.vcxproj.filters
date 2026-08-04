@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\glb_to_tiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\B3DMWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\GLBReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\TilesetWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AA4C01C8-DAC0-3155-8F82-5901556B66C5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

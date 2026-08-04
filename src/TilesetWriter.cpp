@@ -1,24 +1,21 @@
 #include "TilesetWriter.h"
 
-#include <iostream>
 #include <fstream>
-#include <cmath>
+#include <iostream>
 #include <iomanip>
-
-
-static constexpr double DEG_TO_RAD =
-    3.14159265358979323846 / 180.0;
-
-static constexpr double EARTH_RADIUS =
-    6378137.0;
-
+#include <cmath>
 
 
 bool TilesetWriter::writeTileset(
+
     const MeshBuilder& mesh,
+
     double originLat,
+
     double originLon,
+
     const std::string& filename
+
 )
 {
 
@@ -26,17 +23,19 @@ bool TilesetWriter::writeTileset(
 
 
     if(vertices.empty())
+    {
+        std::cout
+        << "Mesh empty\n";
+
         return false;
+    }
 
 
-
-    // -----------------------------
-    // Local bounding box
-    // -----------------------------
 
     double minX = vertices[0].x;
     double minY = vertices[0].y;
     double minZ = vertices[0].z;
+
 
     double maxX = vertices[0].x;
     double maxY = vertices[0].y;
@@ -47,36 +46,37 @@ bool TilesetWriter::writeTileset(
     for(const auto& v : vertices)
     {
 
-        minX = std::min(minX,v.x);
-        minY = std::min(minY,v.y);
-        minZ = std::min(minZ,v.z);
+        minX = std::min(minX, (double)v.x);
+        minY = std::min(minY, (double)v.y);
+        minZ = std::min(minZ, (double)v.z);
 
-        maxX = std::max(maxX,v.x);
-        maxY = std::max(maxY,v.y);
-        maxZ = std::max(maxZ,v.z);
+
+        maxX = std::max(maxX, (double)v.x);
+        maxY = std::max(maxY, (double)v.y);
+        maxZ = std::max(maxZ, (double)v.z);
 
     }
 
 
 
     double centerX =
-        (minX + maxX) * 0.5;
+        (minX+maxX)*0.5;
+
 
     double centerY =
-        (minY + maxY) * 0.5;
+        (minY+maxY)*0.5;
+
 
     double centerZ =
-        (minZ + maxZ) * 0.5;
+        (minZ+maxZ)*0.5;
 
 
 
     double radius =
-        std::sqrt(
+        sqrt(
             (maxX-minX)*(maxX-minX)
-            +
-            (maxY-minY)*(maxY-minY)
-            +
-            (maxZ-minZ)*(maxZ-minZ)
+          + (maxY-minY)*(maxY-minY)
+          + (maxZ-minZ)*(maxZ-minZ)
         );
 
 
@@ -91,109 +91,51 @@ bool TilesetWriter::writeTileset(
 
     out
     << std::fixed
-    << std::setprecision(12);
-
-
-
-    out << "{\n";
+    << std::setprecision(10);
 
 
 
     out <<
-    "  \"asset\": {\n"
-    "    \"version\": \"1.0\"\n"
-    "  },\n";
+R"({
+ "asset":{
+   "version":"1.0"
+ },
+
+ "geometricError":500,
+
+ "root":{
+
+   "boundingVolume":{
+      "box":[)";
 
 
+    out
+    << centerX << ","
+    << centerY << ","
+    << centerZ << ","
 
-    out <<
-    "  \"geometricError\": 500,\n";
+    << radius << ",0,0,0,"
 
+    << radius << ",0,0,0,"
 
-
-    out <<
-    "  \"root\": {\n";
-
-
-
-    /*
-        Root transform
-
-        This replaces:
-
-        Cesium Matrix4 ENU
-        +
-        Z rotation -90
-
-        Later we can make this full
-        ECEF transform.
-    */
-
-
-    double angle =
-        -90.0 * DEG_TO_RAD;
-
-
-
-    double c = cos(angle);
-    double s = sin(angle);
-
+    << radius;
 
 
     out <<
-    "    \"transform\": [\n"
-    << "      "
-    << c << ", "
-    << s << ", "
-    << "0, 0,\n"
+R"(]
+   },
 
-    << "      "
-    << -s << ", "
-    << c << ", "
-    << "0, 0,\n"
+   "geometricError":0,
 
-    << "      "
-    << "0, 0, 1, 0,\n"
+   "refine":"ADD",
 
-    << "      "
-    << "0, 0, 0, 1\n"
+   "content":{
+      "uri":"tile.b3dm"
+   }
 
-    << "    ],\n";
+ }
 
-
-
-    // Bounding sphere
-
-    out <<
-    "    \"boundingVolume\": {\n"
-    "      \"sphere\": [\n"
-    << "        "
-    << centerX << ", "
-    << centerY << ", "
-    << centerZ << ", "
-    << radius
-    << "\n"
-    "      ]\n"
-    "    },\n";
-
-
-
-    out <<
-    "    \"geometricError\": 0,\n"
-    "    \"refine\": \"ADD\",\n";
-
-
-
-    out <<
-    "    \"content\": {\n"
-    "      \"uri\": \"tile.b3dm\"\n"
-    "    }\n";
-
-
-
-    out <<
-    "  }\n"
-    "}\n";
+})";
 
 
 
@@ -202,24 +144,23 @@ bool TilesetWriter::writeTileset(
 
 
     std::cout
-    << "\n========== STEP 4 : TILESET ==========\n"
-    << "Origin latitude : "
+    << "\n========== TILESET ==========\n"
+    << "Origin lat : "
     << originLat
-    << "\nOrigin longitude : "
+    << "\nOrigin lon : "
     << originLon
-    << "\nCenter X : "
-    << centerX
-    << "\nCenter Y : "
-    << centerY
-    << "\nCenter Z : "
+    << "\nCenter : "
+    << centerX << ", "
+    << centerY << ", "
     << centerZ
     << "\nRadius : "
     << radius
-    << "\nTileset : "
+    << "\nOutput : "
     << filename
-    << "\n=====================================\n";
+    << "\n=============================\n";
 
 
 
     return true;
+
 }
