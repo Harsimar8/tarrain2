@@ -1,0 +1,10 @@
+^C:\USERS\HARSIMAR KAUR\DESKTOP\OSM_TO_TILES\FLOWER\GLB_TILER\BUILD\CMAKEFILES\385009E4652360571CCE0822DAAB6D25\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler/build/glb_tiler.slnx"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -7,12 +7,15 @@
 #include "CoordinateConverter.h"
 #include "MeshBuilder.h"
 #include "OBJWriter.h"
+#include <map>
+#include <cmath>
+
 
 int main()
 {
     OsmReader reader;
 
-    if (!reader.load("../data/in.osm"))
+    if (!reader.load("../data/de.osm"))
     {
         std::cout << "Cannot open OSM file" << std::endl;
         return 1;
@@ -137,14 +140,13 @@ std::cout
     << std::endl;
 
 
-    // ---------- Generate B3DM ----------
 
 B3DMWriter b3dmWriter;
 
 
 bool b3dmOK =
 b3dmWriter.writeB3DM(
-    "../data/f1000.glb",
+    "../data/DD3.glb",
     "../output/tile.b3dm"
 );
 
@@ -191,10 +193,10 @@ else
     // ---------- Export OBJ ----------
     OBJWriter writer;
 
-    if (writer.writeOBJ(mesh, "../output/building1000_exact.obj"))
+    if (writer.writeOBJ(mesh, "../output/dehra_exact.obj"))
     {
         std::cout << "\nOBJ written successfully!" << std::endl;
-        std::cout << "File: ../output/building1000_exact.obj" << std::endl;
+        std::cout << "File: ../output/dehra_exact.obj" << std::endl;
     }
     else
     {

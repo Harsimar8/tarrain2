@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\glb_tiler\build\CMakeFiles\385009e4652360571cce0822daab6d25\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E7E51329-21B5-3538-8270-DA7645B23F8B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
