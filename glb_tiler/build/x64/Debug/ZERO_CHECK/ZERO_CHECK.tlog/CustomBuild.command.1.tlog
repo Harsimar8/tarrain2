@@ -1,6 +1,6 @@
-^C:\USERS\HARSIMAR KAUR\DESKTOP\OSM_TO_TILES\FLOWER\GLB_TILER\BUILD\CMAKEFILES\385009E4652360571CCE0822DAAB6D25\GENERATE.STAMP.RULE
+^C:\USERS\DELL\DESKTOP\ARI_TASKS\OSM_TO_TILE\NEW_OSM_TILE\GLB_TILER\BUILD\CMAKEFILES\6B86D18FAD66524E8AF7D7BA020AA0D3\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler/build/glb_tiler.slnx"
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Dell/Desktop/ari_tasks/osm_to_tile/new_osm_tile/glb_tiler -BC:/Users/Dell/Desktop/ari_tasks/osm_to_tile/new_osm_tile/glb_tiler/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Dell/Desktop/ari_tasks/osm_to_tile/new_osm_tile/glb_tiler/build/glb_tiler.slnx
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

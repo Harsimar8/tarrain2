@@ -1,3 +1,3 @@
-C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler/build/CMakeFiles/glb_tiler.dir
-C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/glb_tiler/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Dell/Desktop/ari_tasks/osm_to_tile/new_osm_tile/glb_tiler/build/CMakeFiles/glb_tiler.dir
+C:/Users/Dell/Desktop/ari_tasks/osm_to_tile/new_osm_tile/glb_tiler/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Dell/Desktop/ari_tasks/osm_to_tile/new_osm_tile/glb_tiler/build/CMakeFiles/ZERO_CHECK.dir
