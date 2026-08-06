@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "GLBTiler.h"
 
 int main()
@@ -13,13 +12,11 @@ int main()
 
     tiler.printStats();
 
-    tiler.findConnectedBuildings();
+    tiler.findNearbyBuildings(6.0);
 
-    tiler.writeTileGLB(
-        0,
-        0,
+    tiler.exportAllTiles(
         100.0,
-        "../../output/tile_0_0.glb"
+        "../../output"
     );
 
     return 0;

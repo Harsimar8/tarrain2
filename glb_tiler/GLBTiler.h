@@ -2,24 +2,21 @@
 
 #include <string>
 #include <vector>
-#include <map>
 #include <unordered_map>
-#include <queue>
-#include <set>
-
-#define TINYGLTF_NO_STB_IMAGE
-#define TINYGLTF_NO_STB_IMAGE_WRITE
-
 
 #include "tiny_gltf.h"
 
-
-struct BuildingComponent
+struct BuildingCluster
 {
     std::vector<uint32_t> triangleIndices;
 
     double centerX = 0.0;
     double centerZ = 0.0;
+
+    double minX = 0.0;
+    double minZ = 0.0;
+    double maxX = 0.0;
+    double maxZ = 0.0;
 };
 
 class GLBTiler
@@ -30,8 +27,8 @@ public:
 
     void printStats();
 
-    void findConnectedBuildings();
-
+    void findNearbyBuildings(double threshold);
+    
     bool writeTileGLB(
         int tileX,
         int tileZ,
@@ -39,9 +36,11 @@ public:
         const std::string& outputFile
     );
 
+    void exportAllTiles(double tileSize, const std::string& outputFolder);
+
 private:
 
     tinygltf::Model model;
 
-    std::vector<BuildingComponent> buildings;
+    std::vector<BuildingCluster> buildings;
 };

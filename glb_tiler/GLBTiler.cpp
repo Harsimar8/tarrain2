@@ -1,12 +1,15 @@
-
-
 #include "tiny_gltf.h"
 #include "GLBTiler.h"
 
 #include <iostream>
 #include <limits>
+#include <queue>
+#include <cmath>
 #include <algorithm>
-#include <cstring>
+#include <unordered_map>
+
+
+
 
 bool GLBTiler::load(const std::string& filename)
 {
@@ -15,13 +18,12 @@ bool GLBTiler::load(const std::string& filename)
     std::string err;
     std::string warn;
 
-    bool ok =
-        loader.LoadBinaryFromFile(
-            &model,
-            &err,
-            &warn,
-            filename
-        );
+    bool ok = loader.LoadBinaryFromFile(
+        &model,
+        &err,
+        &warn,
+        filename
+    );
 
     if (!warn.empty())
         std::cout << warn << std::endl;
@@ -32,39 +34,45 @@ bool GLBTiler::load(const std::string& filename)
     return ok;
 }
 
-
 void GLBTiler::printStats()
 {
     if (model.meshes.empty())
-        return;
-
-    const auto& primitive = model.meshes[0].primitives[0];
-
-    auto posIt = primitive.attributes.find("POSITION");
-    if (posIt == primitive.attributes.end())
-        return;
-
-    const auto& accessor = model.accessors[posIt->second];
-    const auto& view     = model.bufferViews[accessor.bufferView];
-    const auto& buffer   = model.buffers[view.buffer];
-
-    const float* positions =
-        reinterpret_cast<const float*>(
-            &buffer.data[view.byteOffset + accessor.byteOffset]);
-
-    double minX = 1e30;
-    double minY = 1e30;
-    double minZ = 1e30;
-
-    double maxX = -1e30;
-    double maxY = -1e30;
-    double maxZ = -1e30;
-
-    for (size_t i = 0; i < accessor.count; i++)
     {
-        double x = positions[i * 3 + 0];
-        double y = positions[i * 3 + 1];
-        double z = positions[i * 3 + 2];
+        std::cout << "No meshes found" << std::endl;
+        return;
+    }
+
+    const auto& mesh = model.meshes[0];
+    const auto& prim = mesh.primitives[0];
+
+    auto posIt = prim.attributes.find("POSITION");
+
+    if (posIt == prim.attributes.end())
+    {
+        std::cout << "No POSITION attribute" << std::endl;
+        return;
+    }
+
+    const auto& posAccessor = model.accessors[posIt->second];
+    const auto& posView     = model.bufferViews[posAccessor.bufferView];
+    const auto& posBuffer   = model.buffers[posView.buffer];
+
+    const float* positions = reinterpret_cast<const float*>(
+        &posBuffer.data[posView.byteOffset + posAccessor.byteOffset]);
+
+    double minX = std::numeric_limits<double>::max();
+    double minY = std::numeric_limits<double>::max();
+    double minZ = std::numeric_limits<double>::max();
+
+    double maxX = -std::numeric_limits<double>::max();
+    double maxY = -std::numeric_limits<double>::max();
+    double maxZ = -std::numeric_limits<double>::max();
+
+    for (size_t i = 0; i < posAccessor.count; i++)
+    {
+        double x = positions[i*3+0];
+        double y = positions[i*3+1];
+        double z = positions[i*3+2];
 
         minX = std::min(minX, x);
         minY = std::min(minY, y);
@@ -75,39 +83,32 @@ void GLBTiler::printStats()
         maxZ = std::max(maxZ, z);
     }
 
-    std::cout
-        << "\n========== GLB STATS ==========\n"
-
-        << "Meshes : "
-        << model.meshes.size()
-        << std::endl
-
-        << "Vertices : "
-        << accessor.count
-        << std::endl
-
-        << "Min : "
-        << minX << ", "
-        << minY << ", "
-        << minZ
-        << std::endl
-
-        << "Max : "
-        << maxX << ", "
-        << maxY << ", "
-        << maxZ
-        << std::endl
-
-        << "===============================\n";
+    std::cout << "\n========== GLB STATS ==========\n";
+    std::cout << "Meshes   : " << model.meshes.size() << std::endl;
+    std::cout << "Vertices : " << posAccessor.count << std::endl;
+    std::cout << "Min      : "
+              << minX << ", "
+              << minY << ", "
+              << minZ << std::endl;
+    std::cout << "Max      : "
+              << maxX << ", "
+              << maxY << ", "
+              << maxZ << std::endl;
+    std::cout << "===============================\n";
 }
 
-
-void GLBTiler::findConnectedBuildings()
+void GLBTiler::findNearbyBuildings(double threshold)
 {
+    buildings.clear();
+
     if (model.meshes.empty())
         return;
 
-    const auto& primitive = model.meshes[0].primitives[0];
+    const auto& mesh = model.meshes[0];
+    if (mesh.primitives.empty())
+        return;
+
+    const auto& primitive = mesh.primitives[0];
 
     auto posIt = primitive.attributes.find("POSITION");
     if (posIt == primitive.attributes.end())
@@ -117,9 +118,8 @@ void GLBTiler::findConnectedBuildings()
     const auto& posView     = model.bufferViews[posAccessor.bufferView];
     const auto& posBuffer   = model.buffers[posView.buffer];
 
-    const float* positions =
-        reinterpret_cast<const float*>(
-            &posBuffer.data[posView.byteOffset + posAccessor.byteOffset]);
+    const float* positions = reinterpret_cast<const float*>(
+        &posBuffer.data[posView.byteOffset + posAccessor.byteOffset]);
 
     const auto& idxAccessor = model.accessors[primitive.indices];
     const auto& idxView     = model.bufferViews[idxAccessor.bufferView];
@@ -127,98 +127,112 @@ void GLBTiler::findConnectedBuildings()
 
     std::vector<uint32_t> indices(idxAccessor.count);
 
-    if (idxAccessor.componentType ==
-        TINYGLTF_COMPONENT_TYPE_UNSIGNED_SHORT)
+    if (idxAccessor.componentType == TINYGLTF_COMPONENT_TYPE_UNSIGNED_SHORT)
     {
-        const uint16_t* src =
-            reinterpret_cast<const uint16_t*>(
-                &idxBuffer.data[idxView.byteOffset + idxAccessor.byteOffset]);
+        const uint16_t* src = reinterpret_cast<const uint16_t*>(
+            &idxBuffer.data[idxView.byteOffset + idxAccessor.byteOffset]);
 
         for (size_t i = 0; i < idxAccessor.count; i++)
             indices[i] = src[i];
     }
     else
     {
-        const uint32_t* src =
-            reinterpret_cast<const uint32_t*>(
-                &idxBuffer.data[idxView.byteOffset + idxAccessor.byteOffset]);
+        const uint32_t* src = reinterpret_cast<const uint32_t*>(
+            &idxBuffer.data[idxView.byteOffset + idxAccessor.byteOffset]);
 
         for (size_t i = 0; i < idxAccessor.count; i++)
             indices[i] = src[i];
     }
 
-    size_t triangleCount = indices.size() / 3;
+    const size_t triangleCount = indices.size() / 3;
 
-    std::unordered_map<uint32_t, std::vector<uint32_t>>
-        vertexToTriangles;
-
-    for (uint32_t t = 0; t < triangleCount; t++)
+    struct TriCenter
     {
-        vertexToTriangles[indices[t * 3 + 0]].push_back(t);
-        vertexToTriangles[indices[t * 3 + 1]].push_back(t);
-        vertexToTriangles[indices[t * 3 + 2]].push_back(t);
+        double x;
+        double z;
+    };
+
+    std::vector<TriCenter> centers(triangleCount);
+
+    for (size_t t = 0; t < triangleCount; t++)
+    {
+        uint32_t i0 = indices[t*3+0];
+        uint32_t i1 = indices[t*3+1];
+        uint32_t i2 = indices[t*3+2];
+
+        centers[t].x =
+            (positions[i0*3+0] +
+             positions[i1*3+0] +
+             positions[i2*3+0]) / 3.0;
+
+        centers[t].z =
+            (positions[i0*3+2] +
+             positions[i1*3+2] +
+             positions[i2*3+2]) / 3.0;
     }
 
     std::vector<bool> visited(triangleCount, false);
 
-    buildings.clear();
-
-    for (uint32_t start = 0; start < triangleCount; start++)
+    for (size_t start = 0; start < triangleCount; start++)
     {
         if (visited[start])
             continue;
 
-        BuildingComponent comp;
+        BuildingCluster cluster;
 
-        std::queue<uint32_t> q;
+        std::queue<size_t> q;
         q.push(start);
         visited[start] = true;
 
-        std::set<uint32_t> uniqueVerts;
+        double minX = centers[start].x;
+        double maxX = centers[start].x;
+        double minZ = centers[start].z;
+        double maxZ = centers[start].z;
 
         while (!q.empty())
         {
-            uint32_t t = q.front();
+            size_t t = q.front();
             q.pop();
 
-            comp.triangleIndices.push_back(t);
+            cluster.triangleIndices.push_back(static_cast<uint32_t>(t));
 
-            for (int k = 0; k < 3; k++)
+            minX = std::min(minX, centers[t].x);
+            maxX = std::max(maxX, centers[t].x);
+            minZ = std::min(minZ, centers[t].z);
+            maxZ = std::max(maxZ, centers[t].z);
+
+            for (size_t n = 0; n < triangleCount; n++)
             {
-                uint32_t v = indices[t * 3 + k];
-                uniqueVerts.insert(v);
+                if (visited[n])
+                    continue;
 
-                for (uint32_t n : vertexToTriangles[v])
+                double dx = centers[t].x - centers[n].x;
+                double dz = centers[t].z - centers[n].z;
+
+                if (std::sqrt(dx*dx + dz*dz) <= threshold)
                 {
-                    if (!visited[n])
-                    {
-                        visited[n] = true;
-                        q.push(n);
-                    }
+                    visited[n] = true;
+                    q.push(n);
                 }
             }
         }
 
-        double sx = 0.0;
-        double sz = 0.0;
+        cluster.minX = minX;
+        cluster.maxX = maxX;
+        cluster.minZ = minZ;
+        cluster.maxZ = maxZ;
 
-        for (uint32_t v : uniqueVerts)
-        {
-            sx += positions[v * 3 + 0];
-            sz += positions[v * 3 + 2];
-        }
+        cluster.centerX = (minX + maxX) * 0.5;
+        cluster.centerZ = (minZ + maxZ) * 0.5;
 
-        comp.centerX = sx / uniqueVerts.size();
-        comp.centerZ = sz / uniqueVerts.size();
-
-        buildings.push_back(comp);
+        buildings.push_back(cluster);
     }
 
-    std::cout
-        << "Buildings detected: "
-        << buildings.size()
-        << std::endl;
+    std::cout << "Buildings detected: "
+              << buildings.size()
+              << std::endl;
 }
+
 
 
 bool GLBTiler::writeTileGLB(
@@ -227,8 +241,11 @@ bool GLBTiler::writeTileGLB(
     double tileSize,
     const std::string& outputFile)
 {
-    if (model.meshes.empty() || buildings.empty())
+    if (model.meshes.empty())
         return false;
+
+    if (buildings.empty())
+        findNearbyBuildings(2.0);
 
     const auto& srcMesh = model.meshes[0];
     const auto& srcPrim = srcMesh.primitives[0];
@@ -248,7 +265,7 @@ bool GLBTiler::writeTileGLB(
     const auto& idxView     = model.bufferViews[idxAccessor.bufferView];
     const auto& idxBuffer   = model.buffers[idxView.buffer];
 
-    std::vector<uint32_t> srcIndices(idxAccessor.count);
+    std::vector<uint32_t> indices(idxAccessor.count);
 
     if (idxAccessor.componentType == TINYGLTF_COMPONENT_TYPE_UNSIGNED_SHORT)
     {
@@ -256,7 +273,7 @@ bool GLBTiler::writeTileGLB(
             &idxBuffer.data[idxView.byteOffset + idxAccessor.byteOffset]);
 
         for (size_t i = 0; i < idxAccessor.count; i++)
-            srcIndices[i] = src[i];
+            indices[i] = src[i];
     }
     else
     {
@@ -264,39 +281,40 @@ bool GLBTiler::writeTileGLB(
             &idxBuffer.data[idxView.byteOffset + idxAccessor.byteOffset]);
 
         for (size_t i = 0; i < idxAccessor.count; i++)
-            srcIndices[i] = src[i];
+            indices[i] = src[i];
     }
-
-    double minX = tileX * tileSize;
-    double maxX = minX + tileSize;
-
-    double minZ = tileZ * tileSize;
-    double maxZ = minZ + tileSize;
 
     std::vector<float> outPositions;
     std::vector<uint32_t> outIndices;
 
     std::unordered_map<uint32_t, uint32_t> vertexMap;
 
-    int buildingCount = 0;
+    double minTileX = tileX * tileSize;
+    double maxTileX = minTileX + tileSize;
+    double minTileZ = tileZ * tileSize;
+    double maxTileZ = minTileZ + tileSize;
 
-    for (const auto& b : buildings)
+    int exportedBuildings = 0;
+
+    for (const auto& cluster : buildings)
     {
-        if (!(b.centerX >= minX &&
-              b.centerX < maxX &&
-              b.centerZ >= minZ &&
-              b.centerZ < maxZ))
+        if (!(cluster.centerX >= minTileX &&
+              cluster.centerX <  maxTileX &&
+              cluster.centerZ >= minTileZ &&
+              cluster.centerZ <  maxTileZ))
+        {
             continue;
+        }
 
-        buildingCount++;
+        exportedBuildings++;
 
-        for (uint32_t tri : b.triangleIndices)
+        for (uint32_t tri : cluster.triangleIndices)
         {
             uint32_t base = tri * 3;
 
             for (int k = 0; k < 3; k++)
             {
-                uint32_t oldIndex = srcIndices[base + k];
+                uint32_t oldIndex = indices[base + k];
 
                 auto it = vertexMap.find(oldIndex);
 
@@ -307,9 +325,9 @@ bool GLBTiler::writeTileGLB(
 
                     vertexMap[oldIndex] = newIndex;
 
-                    outPositions.push_back(positions[oldIndex * 3 + 0]);
-                    outPositions.push_back(positions[oldIndex * 3 + 1]);
-                    outPositions.push_back(positions[oldIndex * 3 + 2]);
+                    outPositions.push_back(positions[oldIndex*3+0]);
+                    outPositions.push_back(positions[oldIndex*3+1]);
+                    outPositions.push_back(positions[oldIndex*3+2]);
 
                     outIndices.push_back(newIndex);
                 }
@@ -321,68 +339,97 @@ bool GLBTiler::writeTileGLB(
         }
     }
 
-    std::cout << "Buildings exported : " << buildingCount << std::endl;
-    std::cout << "Vertices exported  : " << outPositions.size() / 3 << std::endl;
-    std::cout << "Triangles exported : " << outIndices.size() / 3 << std::endl;
+    std::cout << "Buildings exported : " << exportedBuildings << std::endl;
+    std::cout << "Vertices exported  : " << outPositions.size()/3 << std::endl;
+    std::cout << "Triangles exported : " << outIndices.size()/3 << std::endl;
 
-    if (buildingCount == 0)
+    if (exportedBuildings == 0)
         return false;
 
     tinygltf::Model outModel;
+    outModel.asset.version = "2.0";
 
-    outModel.scenes.push_back(tinygltf::Scene());
-    outModel.defaultScene = 0;
+    tinygltf::Buffer buffer;
 
-    outModel.nodes.push_back(tinygltf::Node());
-    outModel.scenes[0].nodes.push_back(0);
+    size_t posBytes = outPositions.size() * sizeof(float);
+    size_t idxBytes = outIndices.size() * sizeof(uint32_t);
 
-    tinygltf::Mesh mesh;
-    tinygltf::Primitive prim;
+    buffer.data.resize(posBytes + idxBytes);
 
-    outModel.buffers.resize(2);
-
-    outModel.buffers[0].data.resize(outPositions.size() * sizeof(float));
-    memcpy(outModel.buffers[0].data.data(),
+    memcpy(buffer.data.data(),
            outPositions.data(),
-           outModel.buffers[0].data.size());
+           posBytes);
 
-    outModel.buffers[1].data.resize(outIndices.size() * sizeof(uint32_t));
-    memcpy(outModel.buffers[1].data.data(),
+    memcpy(buffer.data.data() + posBytes,
            outIndices.data(),
-           outModel.buffers[1].data.size());
+           idxBytes);
 
-    outModel.bufferViews.resize(2);
+    outModel.buffers.push_back(buffer);
 
-    outModel.bufferViews[0].buffer = 0;
-    outModel.bufferViews[0].byteOffset = 0;
-    outModel.bufferViews[0].byteLength = outModel.buffers[0].data.size();
-    outModel.bufferViews[0].target = TINYGLTF_TARGET_ARRAY_BUFFER;
+    tinygltf::BufferView posViewOut;
+    posViewOut.buffer = 0;
+    posViewOut.byteOffset = 0;
+    posViewOut.byteLength = posBytes;
+    posViewOut.target = TINYGLTF_TARGET_ARRAY_BUFFER;
+    outModel.bufferViews.push_back(posViewOut);
 
-    outModel.bufferViews[1].buffer = 1;
-    outModel.bufferViews[1].byteOffset = 0;
-    outModel.bufferViews[1].byteLength = outModel.buffers[1].data.size();
-    outModel.bufferViews[1].target = TINYGLTF_TARGET_ELEMENT_ARRAY_BUFFER;
+    tinygltf::BufferView idxViewOut;
+    idxViewOut.buffer = 0;
+    idxViewOut.byteOffset = posBytes;
+    idxViewOut.byteLength = idxBytes;
+    idxViewOut.target = TINYGLTF_TARGET_ELEMENT_ARRAY_BUFFER;
+    outModel.bufferViews.push_back(idxViewOut);
 
-    outModel.accessors.resize(2);
+    tinygltf::Accessor posAccessorOut;
+posAccessorOut.bufferView = 0;
+posAccessorOut.componentType = TINYGLTF_COMPONENT_TYPE_FLOAT;
+posAccessorOut.count = outPositions.size() / 3;
+posAccessorOut.type = TINYGLTF_TYPE_VEC3;
 
-    outModel.accessors[0].bufferView = 0;
-    outModel.accessors[0].componentType = TINYGLTF_COMPONENT_TYPE_FLOAT;
-    outModel.accessors[0].count = outPositions.size() / 3;
-    outModel.accessors[0].type = TINYGLTF_TYPE_VEC3;
+// Compute bounding box
+double minX = 1e30, minY = 1e30, minZ = 1e30;
+double maxX = -1e30, maxY = -1e30, maxZ = -1e30;
 
-    outModel.accessors[1].bufferView = 1;
-    outModel.accessors[1].componentType = TINYGLTF_COMPONENT_TYPE_UNSIGNED_INT;
-    outModel.accessors[1].count = outIndices.size();
-    outModel.accessors[1].type = TINYGLTF_TYPE_SCALAR;
+for (size_t i = 0; i < outPositions.size(); i += 3)
+{
+    minX = std::min(minX, (double)outPositions[i + 0]);
+    minY = std::min(minY, (double)outPositions[i + 1]);
+    minZ = std::min(minZ, (double)outPositions[i + 2]);
 
-    prim.attributes["POSITION"] = 0;
-    prim.indices = 1;
-    prim.mode = TINYGLTF_MODE_TRIANGLES;
+    maxX = std::max(maxX, (double)outPositions[i + 0]);
+    maxY = std::max(maxY, (double)outPositions[i + 1]);
+    maxZ = std::max(maxZ, (double)outPositions[i + 2]);
+}
 
-    mesh.primitives.push_back(prim);
+posAccessorOut.minValues = { minX, minY, minZ };
+posAccessorOut.maxValues = { maxX, maxY, maxZ };
 
-    outModel.meshes.push_back(mesh);
-    outModel.nodes[0].mesh = 0;
+outModel.accessors.push_back(posAccessorOut);
+
+    tinygltf::Accessor idxAccessorOut;
+    idxAccessorOut.bufferView = 1;
+    idxAccessorOut.componentType = TINYGLTF_COMPONENT_TYPE_UNSIGNED_INT;
+    idxAccessorOut.count = outIndices.size();
+    idxAccessorOut.type = TINYGLTF_TYPE_SCALAR;
+    outModel.accessors.push_back(idxAccessorOut);
+
+    tinygltf::Primitive primOut;
+primOut.attributes["POSITION"] = 0;
+primOut.indices = 1;
+primOut.mode = TINYGLTF_MODE_TRIANGLES;
+
+    tinygltf::Mesh meshOut;
+    meshOut.primitives.push_back(primOut);
+    outModel.meshes.push_back(meshOut);
+
+    tinygltf::Node node;
+    node.mesh = 0;
+    outModel.nodes.push_back(node);
+
+    tinygltf::Scene scene;
+    scene.nodes.push_back(0);
+    outModel.scenes.push_back(scene);
+    outModel.defaultScene = 0;
 
     tinygltf::TinyGLTF writer;
 
@@ -395,12 +442,70 @@ bool GLBTiler::writeTileGLB(
         true);
 
     if (!ok)
-    {
-        std::cout << "Failed writing tile GLB" << std::endl;
         return false;
-    }
 
-    std::cout << "Tile GLB written: " << outputFile << std::endl;
+    std::cout << "Tile GLB written: "
+              << outputFile
+              << std::endl;
 
     return true;
+}
+
+
+
+void GLBTiler::exportAllTiles(double tileSize, const std::string& outputFolder)
+{
+    if (buildings.empty())
+        findNearbyBuildings(6.0);
+
+    if (buildings.empty())
+        return;
+
+    double globalMinX = 1e30;
+    double globalMinZ = 1e30;
+    double globalMaxX = -1e30;
+    double globalMaxZ = -1e30;
+
+    for (const auto& b : buildings)
+    {
+        globalMinX = std::min(globalMinX, b.minX);
+        globalMinZ = std::min(globalMinZ, b.minZ);
+        globalMaxX = std::max(globalMaxX, b.maxX);
+        globalMaxZ = std::max(globalMaxZ, b.maxZ);
+    }
+
+    int minTileX = static_cast<int>(std::floor(globalMinX / tileSize));
+    int maxTileX = static_cast<int>(std::floor(globalMaxX / tileSize));
+
+    int minTileZ = static_cast<int>(std::floor(globalMinZ / tileSize));
+    int maxTileZ = static_cast<int>(std::floor(globalMaxZ / tileSize));
+
+    std::cout << "\n========== EXPORTING TILES ==========\n";
+
+    int exported = 0;
+
+    for (int tz = minTileZ; tz <= maxTileZ; tz++)
+    {
+        for (int tx = minTileX; tx <= maxTileX; tx++)
+        {
+            std::string file =
+                outputFolder +
+                "/tile_" +
+                std::to_string(tx) +
+                "_" +
+                std::to_string(tz) +
+                ".glb";
+
+            if (writeTileGLB(tx, tz, tileSize, file))
+            {
+                exported++;
+            }
+        }
+    }
+
+    std::cout << "Total tiles exported: "
+              << exported
+              << std::endl;
+
+    std::cout << "=====================================\n";
 }

@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\osm_to_tile\new_osm_tile\glb_tiler\main.cpp">
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\glb_tiler\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\osm_to_tile\new_osm_tile\glb_tiler\GLBTiler.cpp">
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\glb_tiler\GLBTiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\osm_to_tile\new_osm_tile\glb_tiler\tinygltf_impl.cpp">
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\glb_tiler\tinygltf_impl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Dell\Desktop\ari_tasks\osm_to_tile\new_osm_tile\glb_tiler\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\glb_tiler\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{D029297D-A31B-3136-8BDF-033EFEB135E2}</UniqueIdentifier>
+      <UniqueIdentifier>{E6DCF0D5-F88D-356D-8366-05ACBC3ED770}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

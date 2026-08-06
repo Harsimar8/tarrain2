@@ -2,13 +2,13 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Dell\Desktop\ari_tasks\osm_to_tile\new_osm_tile\glb_tiler\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\glb_tiler\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\Dell\Desktop\ari_tasks\osm_to_tile\new_osm_tile\glb_tiler\build\Debug\glb_tiler.exe</FullPath>
+      <FullPath>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\glb_tiler\build\Debug\glb_tiler.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\Dell\Desktop\ari_tasks\osm_to_tile\new_osm_tile\glb_tiler\build\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\glb_tiler\build\x64\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
