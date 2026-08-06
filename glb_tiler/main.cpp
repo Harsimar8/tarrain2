@@ -14,10 +14,7 @@ int main()
 
     tiler.findNearbyBuildings(6.0);
 
-    tiler.exportAllTiles(
-        100.0,
-        "../../output"
-    );
+    tiler.exportAllTiles(100.0, "../../output");
 
     return 0;
 }

@@ -13,17 +13,19 @@ std::fabs(a.y - b.y) < 0.001;
 
 void MeshBuilder::buildExtrudedBuilding(
 const std::vector<Point2D>& polygon,
-double height
+double height,
+double terrainHeight
 )
 {
-vertices.clear();
-triangles.clear();
-appendExtrudedBuilding(polygon, height);
+    vertices.clear();
+    triangles.clear();
+    appendExtrudedBuilding(polygon, height, terrainHeight);
 }
 
 void MeshBuilder::appendExtrudedBuilding(
 const std::vector<Point2D>& polygon,
-double height
+double height,
+double terrainHeight
 )
 {
 std::vector<Point2D> clean;
@@ -83,7 +85,7 @@ for (const auto& p : clean)
     vertices.push_back({
         (float)p.x,
         (float)p.y,
-        0.0f
+        (float)terrainHeight
     });
 }
 
@@ -92,10 +94,9 @@ for (const auto& p : clean)
     vertices.push_back({
         (float)p.x,
         (float)p.y,
-        (float)height
+        (float)(terrainHeight + height)
     });
 }
-
 for (int i = 0; i < n; i++)
 {
     int next = (i + 1) % n;

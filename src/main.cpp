@@ -51,26 +51,30 @@ int main()
             << std::endl;
     }
 
-    // ---------- Use first node as origin ----------
-    long long firstNodeId = buildings[0].nodeIds[0];
-    auto firstNode = nodes.find(firstNodeId);
+    // ---------- Compute OSM center as origin ----------
+double minLat =  1e30;
+double maxLat = -1e30;
+double minLon =  1e30;
+double maxLon = -1e30;
 
-    if (firstNode == nodes.end())
-    {
-        std::cout << "First node not found" << std::endl;
-        return 1;
-    }
+for (const auto& kv : nodes)
+{
+    minLat = std::min(minLat, kv.second.lat);
+    maxLat = std::max(maxLat, kv.second.lat);
+    minLon = std::min(minLon, kv.second.lon);
+    maxLon = std::max(maxLon, kv.second.lon);
+}
 
-    CoordinateConverter converter(
-        firstNode->second.lat,
-        firstNode->second.lon);
+double originLat = (minLat + maxLat) * 0.5;
+double originLon = (minLon + maxLon) * 0.5;
 
-    std::cout << "\nOrigin (first node): "
-              << firstNode->second.lat
-              << ", "
-              << firstNode->second.lon
-              << std::endl;
+CoordinateConverter converter(originLat, originLon);
 
+std::cout << "\nOSM center origin: "
+          << originLat
+          << ", "
+          << originLon
+          << std::endl;
     // ---------- Build mesh for ONLY Building 0 ----------
     // ---------- Build mesh for first 30 buildings ----------
 MeshBuilder mesh;
@@ -172,8 +176,8 @@ TilesetWriter tilesWriter;
 bool tilesOK =
 tilesWriter.writeTileset(
     mesh,
-    firstNode->second.lat,
-    firstNode->second.lon,
+    originLat,
+    originLon,
     "../output/tileset.json"
 );
 

@@ -1,12 +1,13 @@
 #include "tiny_gltf.h"
 #include "GLBTiler.h"
-
+#include <filesystem>
 #include <iostream>
 #include <limits>
 #include <queue>
 #include <cmath>
 #include <algorithm>
 #include <unordered_map>
+#include <fstream>
 
 
 
@@ -401,6 +402,13 @@ for (size_t i = 0; i < outPositions.size(); i += 3)
     maxZ = std::max(maxZ, (double)outPositions[i + 2]);
 }
 
+
+tileBounds[{tileX, tileZ}] =
+{
+    minX, minY, minZ,
+    maxX, maxY, maxZ
+};
+
 posAccessorOut.minValues = { minX, minY, minZ };
 posAccessorOut.maxValues = { maxX, maxY, maxZ };
 
@@ -452,9 +460,17 @@ primOut.mode = TINYGLTF_MODE_TRIANGLES;
 }
 
 
-
 void GLBTiler::exportAllTiles(double tileSize, const std::string& outputFolder)
 {
+    namespace fs = std::filesystem;
+
+    // Clear previous bounds
+    tileBounds.clear();
+
+    // Create output/tiles automatically
+    std::string tilesFolder = outputFolder + "/tiles";
+    fs::create_directories(tilesFolder);
+
     if (buildings.empty())
         findNearbyBuildings(6.0);
 
@@ -489,7 +505,7 @@ void GLBTiler::exportAllTiles(double tileSize, const std::string& outputFolder)
         for (int tx = minTileX; tx <= maxTileX; tx++)
         {
             std::string file =
-                outputFolder +
+                tilesFolder +
                 "/tile_" +
                 std::to_string(tx) +
                 "_" +
@@ -503,9 +519,129 @@ void GLBTiler::exportAllTiles(double tileSize, const std::string& outputFolder)
         }
     }
 
+    // Write tileset.json into the same folder
+    writeTilesetJson(
+        minTileX,
+        maxTileX,
+        minTileZ,
+        maxTileZ,
+        tileSize,
+        tilesFolder
+    );
+
     std::cout << "Total tiles exported: "
               << exported
               << std::endl;
 
+    std::cout << "Tiles written to: "
+              << tilesFolder
+              << std::endl;
+
     std::cout << "=====================================\n";
+}
+
+
+void GLBTiler::writeTilesetJson(
+    int minTileX,
+    int maxTileX,
+    int minTileZ,
+    int maxTileZ,
+    double tileSize,
+    const std::string& outputFolder)
+{
+    std::ofstream out(outputFolder + "/tileset.json");
+
+    out << "{\n";
+    out << "  \"asset\": { \"version\": \"1.1\" },\n";
+    out << "  \"geometricError\": 200,\n";
+    out << "  \"root\": {\n";
+
+   double rootMinX = 1e30;
+double rootMinY = 1e30;
+double rootMinZ = 1e30;
+double rootMaxX = -1e30;
+double rootMaxY = -1e30;
+double rootMaxZ = -1e30;
+
+for (const auto& kv : tileBounds)
+{
+    const TileBounds& b = kv.second;
+
+    rootMinX = std::min(rootMinX, b.minX);
+    rootMinY = std::min(rootMinY, b.minY);
+    rootMinZ = std::min(rootMinZ, b.minZ);
+
+    rootMaxX = std::max(rootMaxX, b.maxX);
+    rootMaxY = std::max(rootMaxY, b.maxY);
+    rootMaxZ = std::max(rootMaxZ, b.maxZ);
+}
+
+double centerX = (rootMinX + rootMaxX) * 0.5;
+double centerY = (rootMinY + rootMaxY) * 0.5;
+double centerZ = (rootMinZ + rootMaxZ) * 0.5;
+
+double halfX = (rootMaxX - rootMinX) * 0.5 + 5.0;
+double halfY = (rootMaxY - rootMinY) * 0.5 + 20.0;
+double halfZ = (rootMaxZ - rootMinZ) * 0.5 + 5.0;
+
+out << "    \"boundingVolume\": {\n";
+out << "      \"box\": ["
+    << centerX << "," << centerY << "," << centerZ
+    << ", "
+    << halfX << ",0,0, 0,"
+    << halfY << ",0, 0,0,"
+    << halfZ
+    << "]\n";
+out << "    },\n";
+
+    out << "    \"geometricError\": 50,\n";
+    out << "    \"refine\": \"REPLACE\",\n";
+    out << "    \"children\": [\n";
+
+    bool first = true;
+
+for (int tz = minTileZ; tz <= maxTileZ; tz++)
+{
+    for (int tx = minTileX; tx <= maxTileX; tx++)
+    {
+        auto it = tileBounds.find({tx, tz});
+        if (it == tileBounds.end())
+            continue;
+
+        if (!first)
+            out << ",\n";
+        first = false;
+
+        const TileBounds& b = it->second;
+
+        double cx = (b.minX + b.maxX) * 0.5;
+        double cy = (b.minY + b.maxY) * 0.5;
+        double cz = (b.minZ + b.maxZ) * 0.5;
+
+        double hx = (b.maxX - b.minX) * 0.5 + 5.0;
+double hy = (b.maxY - b.minY) * 0.5 + 20.0;
+double hz = (b.maxZ - b.minZ) * 0.5 + 5.0;
+        out << "      {\n";
+        out << "        \"boundingVolume\": {\n";
+        out << "          \"box\": ["
+            << cx << "," << cy << "," << cz
+            << ", "
+            << hx << ",0,0, 0,"
+            << hy << ",0, 0,0,"
+            << hz
+            << "]\n";
+        out << "        },\n";
+        out << "        \"geometricError\": 0,\n";
+        out << "        \"content\": {\n";
+        out << "          \"uri\": \"tile_"
+            << tx << "_" << tz
+            << ".glb\"\n";
+        out << "        }\n";
+        out << "      }";
+    }
+}
+
+    out << "\n    ]\n";
+    out << "  }\n";
+    out << "}\n";
 }

@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-
+#include <map>
 #include "tiny_gltf.h"
 
 struct BuildingCluster
@@ -19,6 +19,12 @@ struct BuildingCluster
     double maxZ = 0.0;
 };
 
+struct TileBounds
+{
+    double minX, minY, minZ;
+    double maxX, maxY, maxZ;
+};
+
 class GLBTiler
 {
 public:
@@ -28,7 +34,7 @@ public:
     void printStats();
 
     void findNearbyBuildings(double threshold);
-    
+
     bool writeTileGLB(
         int tileX,
         int tileZ,
@@ -43,4 +49,16 @@ private:
     tinygltf::Model model;
 
     std::vector<BuildingCluster> buildings;
+
+    // Tile bounds for tileset.json
+    std::map<std::pair<int,int>, TileBounds> tileBounds;
+
+    void writeTilesetJson(
+        int minTileX,
+        int maxTileX,
+        int minTileZ,
+        int maxTileZ,
+        double tileSize,
+        const std::string& outputFolder
+    );
 };

@@ -22,12 +22,15 @@ class MeshBuilder
 public:
     void buildExtrudedBuilding(
         const std::vector<Point2D>& polygon,
-        double height
+        double height,
+        double terrainHeight = 0.0
     );
+
     void appendExtrudedBuilding(
-    const std::vector<Point2D>& polygon,
-    double height
-);
+        const std::vector<Point2D>& polygon,
+        double height,
+        double terrainHeight = 0.0
+    );
 
     const std::vector<Vertex>& getVertices() const;
     const std::vector<Triangle>& getTriangles() const;
