@@ -7,7 +7,7 @@
 		<BuildType Name="RelWithDebInfo"/>
 		<Platform Name="x64"/>
 	</Configurations>
-	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="14330f29-8c07-33b2-915f-76c0e56c6c84" DefaultStartup="true">
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="9a906c73-89f8-3e24-b9d9-50c3c2acff7b" DefaultStartup="true">
 		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
 		<BuildDependency Project="osm_to_tiles.vcxproj"/>
 		<Build Solution="Debug|*" Project="false"/>
@@ -15,8 +15,8 @@
 		<Build Solution="MinSizeRel|*" Project="false"/>
 		<Build Solution="RelWithDebInfo|*" Project="false"/>
 	</Project>
-	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2c8bcefa-2466-3e2d-873d-6d69f7242397"/>
-	<Project Path="osm_to_tiles.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="208b0f6b-1977-3439-9bc6-7ff45c867d38">
+	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2336d15c-632e-3cb9-bab2-d330b210458c"/>
+	<Project Path="osm_to_tiles.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2fec1c3c-f780-3851-ac97-74e10868ae09">
 		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
 	</Project>
 </Solution>

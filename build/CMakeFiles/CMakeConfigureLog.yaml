@@ -74,9 +74,9 @@ events:
       The output was:
       0
       MSBuild version 18.8.2+ce25c0108 for .NET Framework
-      Build started 03-08-2026 10:07:09.
+      Build started 07-08-2026 16:50:11.
       
-      Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\4.4.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\4.4.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -89,7 +89,7 @@ events:
         CMakeCCompilerId.c
       Link:
         C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
-        CompilerIdC.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\4.4.1\\CompilerIdC\\CompilerIdC.exe
+        CompilerIdC.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\4.4.1\\CompilerIdC\\CompilerIdC.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
@@ -97,13 +97,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
-      Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\4.4.1\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\4.4.1\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:04.66
+      Time Elapsed 00:00:05.13
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -111,7 +111,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
       
       The C compiler identification is MSVC, found in:
-        C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/4.4.1/CompilerIdC/CompilerIdC.exe
+        C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/4.4.1/CompilerIdC/CompilerIdC.exe
       
   -
     kind: "find-v1"
@@ -685,9 +685,9 @@ events:
       The output was:
       0
       MSBuild version 18.8.2+ce25c0108 for .NET Framework
-      Build started 03-08-2026 10:07:15.
+      Build started 07-08-2026 16:50:17.
       
-      Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\4.4.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\4.4.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -700,7 +700,7 @@ events:
         CMakeCXXCompilerId.cpp
       Link:
         C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\4.4.1\\CompilerIdCXX\\CompilerIdCXX.exe
+        CompilerIdCXX.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\4.4.1\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -708,13 +708,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\4.4.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\4.4.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:02.19
+      Time Elapsed 00:00:02.95
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -722,7 +722,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/4.4.1/CompilerIdCXX/CompilerIdCXX.exe
+        C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/4.4.1/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "find-v1"
@@ -1074,8 +1074,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-clsbu0"
-      binary: "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-clsbu0"
+      source: "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-zlkn9e"
+      binary: "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-zlkn9e"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
@@ -1085,39 +1085,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-clsbu0'
+        Change Dir: 'C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-zlkn9e'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2e9ff.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_254d4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.8.2+ce25c0108 for .NET Framework
-        Build started 03-08-2026 10:07:19.
+        Build started 07-08-2026 16:50:22.
         
-        Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-clsbu0\\cmTC_2e9ff.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zlkn9e\\cmTC_254d4.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-clsbu0\\Debug\\".
-          Creating directory "cmTC_2e9ff.dir\\Debug\\cmTC_2e9ff.tlog\\".
+          Creating directory "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zlkn9e\\Debug\\".
+          Creating directory "cmTC_254d4.dir\\Debug\\cmTC_254d4.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_2e9ff.dir\\Debug\\cmTC_2e9ff.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_2e9ff.dir\\Debug\\cmTC_2e9ff.tlog\\unsuccessfulbuild".
+          Creating "cmTC_254d4.dir\\Debug\\cmTC_254d4.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_254d4.dir\\Debug\\cmTC_254d4.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_2e9ff.dir\\Debug\\\\" /Fd"cmTC_2e9ff.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_254d4.dir\\Debug\\\\" /Fd"cmTC_254d4.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36252 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_2e9ff.dir\\Debug\\\\" /Fd"cmTC_2e9ff.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_254d4.dir\\Debug\\\\" /Fd"cmTC_254d4.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-clsbu0\\Debug\\cmTC_2e9ff.exe" /INCREMENTAL /ILK:"cmTC_2e9ff.dir\\Debug\\cmTC_2e9ff.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-clsbu0/Debug/cmTC_2e9ff.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-clsbu0/Debug/cmTC_2e9ff.lib" /MACHINE:X64  /machine:x64 cmTC_2e9ff.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_2e9ff.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-clsbu0\\Debug\\cmTC_2e9ff.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zlkn9e\\Debug\\cmTC_254d4.exe" /INCREMENTAL /ILK:"cmTC_254d4.dir\\Debug\\cmTC_254d4.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-zlkn9e/Debug/cmTC_254d4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-zlkn9e/Debug/cmTC_254d4.lib" /MACHINE:X64  /machine:x64 cmTC_254d4.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_254d4.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zlkn9e\\Debug\\cmTC_254d4.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_2e9ff.dir\\Debug\\cmTC_2e9ff.tlog\\unsuccessfulbuild".
-          Touching "cmTC_2e9ff.dir\\Debug\\cmTC_2e9ff.tlog\\cmTC_2e9ff.lastbuildstate".
-        Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-clsbu0\\cmTC_2e9ff.vcxproj" (default targets).
+          Deleting file "cmTC_254d4.dir\\Debug\\cmTC_254d4.tlog\\unsuccessfulbuild".
+          Touching "cmTC_254d4.dir\\Debug\\cmTC_254d4.tlog\\cmTC_254d4.lastbuildstate".
+        Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zlkn9e\\cmTC_254d4.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.67
+        Time Elapsed 00:00:02.67
         
       exitCode: 0
   -
@@ -1130,7 +1130,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-clsbu0\\Debug\\cmTC_2e9ff.exe" /INCREMENTAL /ILK:"cmTC_2e9ff.dir\\Debug\\cmTC_2e9ff.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-clsbu0/Debug/cmTC_2e9ff.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-clsbu0/Debug/cmTC_2e9ff.lib" /MACHINE:X64  /machine:x64 cmTC_2e9ff.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zlkn9e\\Debug\\cmTC_254d4.exe" /INCREMENTAL /ILK:"cmTC_254d4.dir\\Debug\\cmTC_254d4.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-zlkn9e/Debug/cmTC_254d4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-zlkn9e/Debug/cmTC_254d4.lib" /MACHINE:X64  /machine:x64 cmTC_254d4.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
         linker tool for 'C': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
         implicit libs: []
         implicit objs: []
@@ -1158,8 +1158,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-3rnl2b"
-      binary: "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-3rnl2b"
+      source: "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-uraw2f"
+      binary: "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-uraw2f"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1170,39 +1170,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-3rnl2b'
+        Change Dir: 'C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-uraw2f'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_8f71b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_488de.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.8.2+ce25c0108 for .NET Framework
-        Build started 03-08-2026 10:07:22.
+        Build started 07-08-2026 16:50:26.
         
-        Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3rnl2b\\cmTC_8f71b.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uraw2f\\cmTC_488de.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3rnl2b\\Debug\\".
-          Creating directory "cmTC_8f71b.dir\\Debug\\cmTC_8f71b.tlog\\".
+          Creating directory "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uraw2f\\Debug\\".
+          Creating directory "cmTC_488de.dir\\Debug\\cmTC_488de.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_8f71b.dir\\Debug\\cmTC_8f71b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_8f71b.dir\\Debug\\cmTC_8f71b.tlog\\unsuccessfulbuild".
+          Creating "cmTC_488de.dir\\Debug\\cmTC_488de.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_488de.dir\\Debug\\cmTC_488de.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_8f71b.dir\\Debug\\\\" /Fd"cmTC_8f71b.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_488de.dir\\Debug\\\\" /Fd"cmTC_488de.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36252 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_8f71b.dir\\Debug\\\\" /Fd"cmTC_8f71b.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_488de.dir\\Debug\\\\" /Fd"cmTC_488de.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3rnl2b\\Debug\\cmTC_8f71b.exe" /INCREMENTAL /ILK:"cmTC_8f71b.dir\\Debug\\cmTC_8f71b.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-3rnl2b/Debug/cmTC_8f71b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-3rnl2b/Debug/cmTC_8f71b.lib" /MACHINE:X64  /machine:x64 cmTC_8f71b.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_8f71b.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3rnl2b\\Debug\\cmTC_8f71b.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uraw2f\\Debug\\cmTC_488de.exe" /INCREMENTAL /ILK:"cmTC_488de.dir\\Debug\\cmTC_488de.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-uraw2f/Debug/cmTC_488de.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-uraw2f/Debug/cmTC_488de.lib" /MACHINE:X64  /machine:x64 cmTC_488de.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_488de.vcxproj -> C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uraw2f\\Debug\\cmTC_488de.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_8f71b.dir\\Debug\\cmTC_8f71b.tlog\\unsuccessfulbuild".
-          Touching "cmTC_8f71b.dir\\Debug\\cmTC_8f71b.tlog\\cmTC_8f71b.lastbuildstate".
-        Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3rnl2b\\cmTC_8f71b.vcxproj" (default targets).
+          Deleting file "cmTC_488de.dir\\Debug\\cmTC_488de.tlog\\unsuccessfulbuild".
+          Touching "cmTC_488de.dir\\Debug\\cmTC_488de.tlog\\cmTC_488de.lastbuildstate".
+        Done Building Project "C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uraw2f\\cmTC_488de.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.62
+        Time Elapsed 00:00:02.73
         
       exitCode: 0
   -
@@ -1215,7 +1215,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\osm_to_tiles\\flower\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3rnl2b\\Debug\\cmTC_8f71b.exe" /INCREMENTAL /ILK:"cmTC_8f71b.dir\\Debug\\cmTC_8f71b.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-3rnl2b/Debug/cmTC_8f71b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/CMakeScratch/TryCompile-3rnl2b/Debug/cmTC_8f71b.lib" /MACHINE:X64  /machine:x64 cmTC_8f71b.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Harsimar Kaur\\Desktop\\t\\new_osm_tile\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uraw2f\\Debug\\cmTC_488de.exe" /INCREMENTAL /ILK:"cmTC_488de.dir\\Debug\\cmTC_488de.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-uraw2f/Debug/cmTC_488de.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/CMakeScratch/TryCompile-uraw2f/Debug/cmTC_488de.lib" /MACHINE:X64  /machine:x64 cmTC_488de.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
         linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
         implicit libs: []
         implicit objs: []

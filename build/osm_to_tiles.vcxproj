@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{208B0F6B-1977-3439-9BC6-7FF45C867D38}</ProjectGuid>
+    <ProjectGuid>{2FEC1C3C-F780-3851-AC97-74E10868AE09}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.28000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">osm_to_tiles.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">osm_to_tiles</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">osm_to_tiles.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">osm_to_tiles</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">osm_to_tiles.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">osm_to_tiles</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">osm_to_tiles.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">osm_to_tiles</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -111,10 +111,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -129,9 +129,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/Debug/osm_to_tiles.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/Debug/osm_to_tiles.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/Debug/osm_to_tiles.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/Debug/osm_to_tiles.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -141,7 +141,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -167,10 +167,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -185,9 +185,9 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/Release/osm_to_tiles.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/Release/osm_to_tiles.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/Release/osm_to_tiles.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/Release/osm_to_tiles.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -197,7 +197,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -223,10 +223,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -241,9 +241,9 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/MinSizeRel/osm_to_tiles.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/MinSizeRel/osm_to_tiles.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/MinSizeRel/osm_to_tiles.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/MinSizeRel/osm_to_tiles.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -253,7 +253,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -278,10 +278,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -296,9 +296,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/RelWithDebInfo/osm_to_tiles.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/RelWithDebInfo/osm_to_tiles.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/RelWithDebInfo/osm_to_tiles.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/RelWithDebInfo/osm_to_tiles.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -307,11 +307,11 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile" "-BC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -319,12 +319,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile" "-BC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -332,12 +332,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile" "-BC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -345,12 +345,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile" "-BC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -358,24 +358,20 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeCXXCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeRCCompiler.cmake;C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\4.4.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\main.cpp" />
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\OsmReader.cpp" />
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\CoordinateConverter.cpp" />
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\MeshBuilder.cpp" />
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\OBJWriter.cpp" />
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\B3DMWriter.cpp" />
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\src\TilesetWriter.cpp" />
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src\main.cpp" />
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src\OsmReader.cpp" />
+    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src\TileBuilder.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Harsimar Kaur\Desktop\osm_to_tiles\flower\build\ZERO_CHECK.vcxproj">
-      <Project>{2C8BCEFA-2466-3E2D-873D-6D69F7242397}</Project>
+    <ProjectReference Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\build\ZERO_CHECK.vcxproj">
+      <Project>{2336D15C-632E-3CB9-BAB2-D330B210458C}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

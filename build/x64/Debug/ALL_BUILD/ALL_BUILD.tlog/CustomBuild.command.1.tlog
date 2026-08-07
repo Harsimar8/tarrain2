@@ -1,6 +1,6 @@
-^C:\USERS\HARSIMAR KAUR\DESKTOP\OSM_TO_TILES\FLOWER\CMAKELISTS.TXT
+^C:\USERS\HARSIMAR KAUR\DESKTOP\T\NEW_OSM_TILE\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower" "-BC:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/osm_to_tiles/flower/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile" "-BC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
