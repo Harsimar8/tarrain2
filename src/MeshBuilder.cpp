@@ -102,18 +102,62 @@ void MeshBuilder::appendExtrudedBuilding(
     }
 
     // Walls
-    for (int i = 0; i < n; i++)
-    {
-        int next = (i + 1) % n;
+    // Walls with duplicated vertices and UVs
+for (int i = 0; i < n; i++)
+{
+    int next = (i + 1) % n;
 
-        int g1 = offset + i;
-        int g2 = offset + next;
-        int r1 = offset + i + n;
-        int r2 = offset + next + n;
+    const Point2D& p1 = clean[i];
+    const Point2D& p2 = clean[next];
 
-        triangles.push_back({g1, g2, r1});
-        triangles.push_back({g2, r2, r1});
-    }
+    // Length of this wall
+    float wallLength = std::sqrt(
+        (float)((p2.x - p1.x) * (p2.x - p1.x) +
+                (p2.y - p1.y) * (p2.y - p1.y)));
+
+    int base = (int)vertices.size();
+
+    // Ground left
+    vertices.push_back({
+        (float)p1.x,
+        (float)p1.y,
+        (float)terrainHeight,
+        0.0f,
+        0.0f
+    });
+
+    // Ground right
+    vertices.push_back({
+        (float)p2.x,
+        (float)p2.y,
+        (float)terrainHeight,
+        wallLength / 3.0f,
+        0.0f
+    });
+
+    // Roof left
+    vertices.push_back({
+        (float)p1.x,
+        (float)p1.y,
+        (float)(terrainHeight + height),
+        0.0f,
+        (float)(height / 3.0f)
+    });
+
+    // Roof right
+    vertices.push_back({
+        (float)p2.x,
+        (float)p2.y,
+        (float)(terrainHeight + height),
+        wallLength / 3.0f,
+        (float)(height / 3.0f)
+    });
+
+    // Two triangles
+    triangles.push_back({base + 0, base + 1, base + 2});
+    triangles.push_back({base + 1, base + 3, base + 2});
+}
+
 
     // Roof
     for (int i = 1; i < n - 1; i++)
