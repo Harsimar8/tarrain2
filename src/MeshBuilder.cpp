@@ -80,17 +80,25 @@ void MeshBuilder::appendExtrudedBuilding(
     // Ground vertices
     for (const auto &p : clean)
     {
-        vertices.push_back({(float)p.x,
-                            (float)p.y,
-                            (float)terrainHeight});
+        vertices.push_back({
+    (float)p.x,
+    (float)p.y,
+    (float)terrainHeight,
+    0.0f,
+    0.0f
+});
     }
 
     // Roof vertices
     for (const auto &p : clean)
     {
-        vertices.push_back({(float)p.x,
-                            (float)p.y,
-                            (float)(terrainHeight + height)});
+        vertices.push_back({
+    (float)p.x,
+    (float)p.y,
+    (float)(terrainHeight + height),
+    0.0f,
+    0.0f
+});
     }
 
     // Walls

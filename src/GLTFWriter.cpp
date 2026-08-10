@@ -52,6 +52,17 @@ for (const auto& v : vertices)
     positions.push_back(-v.y);  // North
 }
 
+
+// Simple UV coordinates
+std::vector<float> texcoords;
+texcoords.reserve(vertices.size() * 2);
+
+for (const auto& v : vertices)
+{
+    texcoords.push_back(v.u);
+    texcoords.push_back(v.v);
+}
+
     std::vector<unsigned int> indices;
     indices.reserve(triangles.size() * 3);
 
@@ -63,43 +74,66 @@ for (const auto& v : vertices)
     }
 
     size_t positionBytes = positions.size() * sizeof(float);
-    size_t indexBytes = indices.size() * sizeof(unsigned int);
+size_t texcoordBytes = texcoords.size() * sizeof(float);
+size_t indexBytes = indices.size() * sizeof(unsigned int);
 
-    while (positionBytes % 4 != 0)
-        positionBytes++;
+while (positionBytes % 4 != 0) positionBytes++;
+while (texcoordBytes % 4 != 0) texcoordBytes++;
 
-    std::vector<unsigned char> bufferData(positionBytes + indexBytes, 0);
+std::vector<unsigned char> bufferData(
+    positionBytes + texcoordBytes + indexBytes,
+    0
+);
 
-    std::memcpy(
-        bufferData.data(),
-        positions.data(),
-        positions.size() * sizeof(float)
-    );
+// Positions
+std::memcpy(
+    bufferData.data(),
+    positions.data(),
+    positions.size() * sizeof(float)
+);
 
-    std::memcpy(
-        bufferData.data() + positionBytes,
-        indices.data(),
-        indexBytes
-    );
+// UVs
+std::memcpy(
+    bufferData.data() + positionBytes,
+    texcoords.data(),
+    texcoords.size() * sizeof(float)
+);
+
+// Indices
+std::memcpy(
+    bufferData.data() + positionBytes + texcoordBytes,
+    indices.data(),
+    indexBytes
+);
 
     tinygltf::Buffer buffer;
     buffer.data = bufferData;
     buffer.uri = "";
     model.buffers.push_back(buffer);
 
-    tinygltf::BufferView positionView;
-    positionView.buffer = 0;
-    positionView.byteOffset = 0;
-    positionView.byteLength = (int)positionBytes;
-    positionView.target = TINYGLTF_TARGET_ARRAY_BUFFER;
-    model.bufferViews.push_back(positionView);
+   tinygltf::BufferView positionView;
+positionView.buffer = 0;
+positionView.byteOffset = 0;
+positionView.byteLength = (int)positionBytes;
+positionView.target = TINYGLTF_TARGET_ARRAY_BUFFER;
+model.bufferViews.push_back(positionView);
 
-    tinygltf::BufferView indexView;
-    indexView.buffer = 0;
-    indexView.byteOffset = (int)positionBytes;
-    indexView.byteLength = (int)indexBytes;
-    indexView.target = TINYGLTF_TARGET_ELEMENT_ARRAY_BUFFER;
-    model.bufferViews.push_back(indexView);
+// UV buffer view
+tinygltf::BufferView texcoordView;
+texcoordView.buffer = 0;
+texcoordView.byteOffset = (int)positionBytes;
+texcoordView.byteLength = (int)texcoordBytes;
+texcoordView.target = TINYGLTF_TARGET_ARRAY_BUFFER;
+model.bufferViews.push_back(texcoordView);
+
+// Index buffer view
+tinygltf::BufferView indexView;
+indexView.buffer = 0;
+indexView.byteOffset = (int)(positionBytes + texcoordBytes);
+indexView.byteLength = (int)indexBytes;
+indexView.target = TINYGLTF_TARGET_ELEMENT_ARRAY_BUFFER;
+model.bufferViews.push_back(indexView);
+
 
     tinygltf::Accessor positionAccessor;
     positionAccessor.bufferView = 0;
@@ -112,8 +146,19 @@ for (const auto& v : vertices)
     positionAccessor.maxValues = { maxX, maxY, maxZ };
     model.accessors.push_back(positionAccessor);
 
+
+    tinygltf::Accessor texcoordAccessor;
+texcoordAccessor.bufferView = 1;
+texcoordAccessor.byteOffset = 0;
+texcoordAccessor.componentType = TINYGLTF_COMPONENT_TYPE_FLOAT;
+texcoordAccessor.count = (int)vertices.size();
+texcoordAccessor.type = TINYGLTF_TYPE_VEC2;
+texcoordAccessor.normalized = false;
+model.accessors.push_back(texcoordAccessor);
+
+
     tinygltf::Accessor indexAccessor;
-    indexAccessor.bufferView = 1;
+    indexAccessor.bufferView = 2;
     indexAccessor.byteOffset = 0;
     indexAccessor.componentType = TINYGLTF_COMPONENT_TYPE_UNSIGNED_INT;
     indexAccessor.count = (int)indices.size();
@@ -123,7 +168,8 @@ for (const auto& v : vertices)
 
     tinygltf::Primitive primitive;
     primitive.attributes["POSITION"] = 0;
-    primitive.indices = 1;
+primitive.attributes["TEXCOORD_0"] = 1;
+primitive.indices = 2;
     primitive.mode = TINYGLTF_MODE_TRIANGLES;
 
     tinygltf::Mesh gltfMesh;
