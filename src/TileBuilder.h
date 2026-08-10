@@ -14,6 +14,9 @@ struct Tile
     double minLon = 0.0;
     double maxLat = 0.0;
     double maxLon = 0.0;
+
+    // NEW: terrain elevation at the tile center
+    double terrainElevation = 0.0;
 };
 
 class TileBuilder

@@ -1,6 +1,6 @@
-^C:\USERS\HARSIMAR KAUR\DESKTOP\T\NEW_OSM_TILE\CMAKELISTS.TXT
+^C:\USERS\DELL\DESKTOP\ARI_TASKS\8AUG\TERRAIN\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile" "-BC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build" --check-stamp-file "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Dell/Desktop/ari_tasks/8aug/terrain -BC:/Users/Dell/Desktop/ari_tasks/8aug/terrain/build --check-stamp-file C:/Users/Dell/Desktop/ari_tasks/8aug/terrain/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile
+# Install script for directory: C:/Users/Dell/Desktop/ari_tasks/8aug/terrain
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/flower")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/terrain")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -35,7 +35,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/install_local_manifest.txt"
+  file(WRITE "C:/Users/Dell/Desktop/ari_tasks/8aug/terrain/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -51,6 +51,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/Dell/Desktop/ari_tasks/8aug/terrain/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

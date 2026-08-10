@@ -92,6 +92,9 @@ if (it == nodes.end())
 
             tile.buildingIndices.push_back((int)i);
 
+            int newTileIndex = static_cast<int>(result.size());
+
+
             tileMap[key] = (int)result.size();
             result.push_back(tile);
         }

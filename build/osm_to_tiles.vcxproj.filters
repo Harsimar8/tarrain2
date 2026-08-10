@@ -1,22 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src\main.cpp">
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src\OsmReader.cpp">
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\OsmReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\src\TileBuilder.cpp">
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\tinygltf_impl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\TileBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\TerrainInputWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\CoordinateConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\MeshBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\GLTFWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\B3DMWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\src\TilesetWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Harsimar Kaur\Desktop\t\new_osm_tile\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Dell\Desktop\ari_tasks\8aug\terrain\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{3692C8A7-BA46-3B20-9FEA-F93350F5F16B}</UniqueIdentifier>
+      <UniqueIdentifier>{0C732670-B408-3B5D-97F4-E1ADAC15DF65}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

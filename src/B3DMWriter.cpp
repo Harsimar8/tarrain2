@@ -217,23 +217,7 @@ bool B3DMWriter::writeB3DM(
 
 
 
-    std::cout
-        << "\n========== STEP 3 : GLB -> B3DM ==========\n"
-        << "Input GLB       : "
-        << glbFile
-        << "\nGLB size        : "
-        << glb.size()
-        << " bytes\n"
-        << "Feature JSON    : "
-        << featureJSONLength
-        << " bytes\n"
-        << "B3DM size       : "
-        << byteLength
-        << " bytes\n"
-        << "Output B3DM     : "
-        << b3dmFile
-        << "\n===========================================\n";
-
+   
 
 
     return true;

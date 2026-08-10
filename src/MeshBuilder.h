@@ -3,6 +3,8 @@
 #include <vector>
 #include "CoordinateConverter.h"
 
+extern int gCurrentTileIndex;
+
 struct Vertex
 {
     float x;

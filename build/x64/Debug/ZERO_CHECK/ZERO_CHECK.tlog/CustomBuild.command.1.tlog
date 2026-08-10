@@ -1,6 +1,6 @@
-^C:\USERS\HARSIMAR KAUR\DESKTOP\T\NEW_OSM_TILE\BUILD\CMAKEFILES\4382E9D2491FFB279580B47FDB5FD09F\GENERATE.STAMP.RULE
+^C:\USERS\DELL\DESKTOP\ARI_TASKS\8AUG\TERRAIN\BUILD\CMAKEFILES\6147FFD626FB93E36B85C6EE693686DC\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile" "-BC:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Harsimar Kaur/Desktop/t/new_osm_tile/build/flower.slnx"
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Dell/Desktop/ari_tasks/8aug/terrain -BC:/Users/Dell/Desktop/ari_tasks/8aug/terrain/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Dell/Desktop/ari_tasks/8aug/terrain/build/terrain.slnx
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

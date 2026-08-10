@@ -1,24 +1,15 @@
 #pragma once
 
 #include <string>
-#include "MeshBuilder.h"
-
+#include <vector>
+#include "TileBuilder.h"
 
 class TilesetWriter
 {
-
 public:
-
     bool writeTileset(
-
-        const MeshBuilder& mesh,
-
-        double originLat,
-
-        double originLon,
-
+        const std::vector<Tile>& tiles,
+        const std::vector<double>& tileElevations,
         const std::string& filename
-
     );
-
 };

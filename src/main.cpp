@@ -1,16 +1,70 @@
 #include <iostream>
-#include <vector>
-#include <iomanip>
-#include "B3DMWriter.h"
-#include "TilesetWriter.h"
+#include <fstream>
+#include <sstream>
+#include <unordered_map>
+#include <regex>
+#include "GLTFWriter.h"
 #include "OsmReader.h"
+#include "TileBuilder.h"
+#include "TerrainInputWriter.h"
 #include "CoordinateConverter.h"
 #include "MeshBuilder.h"
-#include "OBJWriter.h"
-#include <map>
-#include <cmath>
-#include "TileBuilder.h"
+#include "B3DMWriter.h"
+#include "TilesetWriter.h"
 
+
+// --------------------------------------------------
+// Terrain data
+// --------------------------------------------------
+struct TerrainData
+{
+    double tileCenterElevation = 0.0;
+    std::unordered_map<int, double> buildingElevations;
+};
+
+TerrainData loadTerrainData(const std::string &filename)
+{
+    TerrainData data;
+
+    std::ifstream file(filename);
+
+    if (!file.is_open())
+    {
+        std::cout << "Cannot open " << filename << std::endl;
+        return data;
+    }
+
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+
+    std::string text = buffer.str();
+
+    std::regex centerRegex(
+        "\\\"tileCenterElevation\\\"\\\\s*:\\\\s*([-0-9.]+)");
+
+    std::smatch match;
+
+    if (std::regex_search(text, match, centerRegex))
+        data.tileCenterElevation = std::stod(match[1]);
+
+    std::regex entryRegex(
+        "\\\"([0-9]+)\\\"\\\\s*:\\\\s*([-0-9.]+)");
+
+    auto begin =
+        std::sregex_iterator(text.begin(), text.end(), entryRegex);
+
+    auto end = std::sregex_iterator();
+
+    for (auto it = begin; it != end; ++it)
+    {
+        int id = std::stoi((*it)[1]);
+        double h = std::stod((*it)[2]);
+
+        data.buildingElevations[id] = h;
+    }
+
+    return data;
+}
 
 int main()
 {
@@ -25,226 +79,180 @@ int main()
     const auto &nodes = reader.getNodes();
     const auto &buildings = reader.getBuildings();
 
+    TileBuilder tileBuilder;
+    auto tiles = tileBuilder.buildTiles(buildings, nodes, 250.0);
+
+    std::cout << "Total buildings: " << buildings.size() << std::endl;
+    std::cout << "Total tiles: " << tiles.size() << std::endl;
+
+    size_t totalAssigned = 0;
+    std::vector<double> tileElevations(tiles.size(), 0.0);
 
 
-TileBuilder tileBuilder;
-auto tiles = tileBuilder.buildTiles(buildings, nodes, 250.0); // 250 m tiles
+    for (size_t tileIndex = 0; tileIndex < tiles.size(); ++tileIndex)
+    {
+        const Tile &tile = tiles[tileIndex];
 
-std::cout << "Total buildings: " << buildings.size() << std::endl;
-std::cout << "Total tiles: " << tiles.size() << std::endl;
+        totalAssigned += tile.buildingIndices.size();
 
-size_t totalAssigned = 0;
+        std::string elevationFile =
+            "../output/elevations/tile_" +
+            std::to_string(tileIndex) +
+            "_elevations.json";
 
-for (size_t i = 0; i < tiles.size(); ++i)
+        TerrainData terrain =
+            loadTerrainData(elevationFile);
+
+
+         tileElevations[tileIndex] = terrain.tileCenterElevation;   
+          
+
+        CoordinateConverter converter(
+            tile.centerLat,
+            tile.centerLon);
+
+        if (tileIndex == 538)
 {
-    const Tile& t = tiles[i];
+    std::cout << "==============================" << std::endl;
+    std::cout << "Tile " << tileIndex << std::endl;
+    std::cout << "Tile center lat: " << tile.centerLat << std::endl;
+    std::cout << "Tile center lon: " << tile.centerLon << std::endl;
+    std::cout << "Buildings in tile: " << tile.buildingIndices.size() << std::endl;
+}
+        MeshBuilder mesh;
+        gCurrentTileIndex = static_cast<int>(tileIndex);
 
-    totalAssigned += t.buildingIndices.size();
+        for (int buildingIndex : tile.buildingIndices)
+        {
+            const Building &b = buildings[buildingIndex];
 
-    // std::cout
-    //     << "Tile " << i
-    //     << " | center ("
-    //     << t.centerLat
-    //     << ", "
-    //     << t.centerLon
-    //     << ") | buildings: "
-    //     << t.buildingIndices.size()
-    //     << std::endl;
+            std::vector<Point2D> polygon;
+
+            for (long long nodeId : b.nodeIds)
+            {
+                auto it = nodes.find(nodeId);
+
+                if (it == nodes.end())
+                    continue;
+
+            Point2D pt = converter.toLocal(
+    it->second.lat,
+    it->second.lon);
+
+polygon.push_back(pt);
+
+
+if (tileIndex == 538 && polygon.size() == 1)
+{
+    std::cout << "First local point: ("
+              << pt.x << ", "
+              << pt.y << ")"
+              << std::endl;
+}
+            }
+
+            if (polygon.size() < 3)
+                continue;
+
+            double h = 10.0;
+
+            if (b.height > 0)
+                h = b.height;
+            else if (b.levels > 0)
+                h = b.levels * 3.0;
+
+            double buildingTerrain = terrain.tileCenterElevation;
+
+            auto e =
+                terrain.buildingElevations.find(buildingIndex);
+
+            if (e != terrain.buildingElevations.end())
+                buildingTerrain = e->second;
+
+            double shiftedTerrain =
+                buildingTerrain -
+                terrain.tileCenterElevation;
+
+            mesh.appendExtrudedBuilding(
+                polygon,
+                h,
+                shiftedTerrain);
+        }
+
+        if (tileIndex == 538)
+{
+    std::cout << "Tile 538 vertices: "
+              << mesh.getVertices().size()
+              << std::endl;
+
+    std::cout << "Tile 538 triangles: "
+              << mesh.getTriangles().size()
+              << std::endl;
 }
 
-std::cout
-    << "Total assigned buildings: "
-    << totalAssigned
-    << std::endl;
+        if (mesh.getVertices().empty())
+    continue;
+
+// -----------------------------
+// GLB
+// -----------------------------
+
+GLTFWriter gltfWriter;
+
+std::string glbFile =
+    "../output/glb/tile_" +
+    std::to_string(tileIndex) +
+    ".glb";
+
+if (!gltfWriter.writeGLB(mesh, glbFile))
+{
+    std::cout
+        << "Failed GLB: "
+        << glbFile
+        << std::endl;
+
+    continue;
+}
+
+// -----------------------------
+// B3DM
+// -----------------------------
+
+B3DMWriter b3dmWriter;
+
+std::string b3dmFile =
+    "../output/b3dm/tile_" +
+    std::to_string(tileIndex) +
+    ".b3dm";
+
+if (!b3dmWriter.writeB3DM(glbFile, b3dmFile))
+{
+    std::cout
+        << "Failed B3DM: "
+        << b3dmFile
+        << std::endl;
+
+    continue;
+}
 
 
 
-    if (buildings.empty())
-    {
-        std::cout << "No buildings found" << std::endl;
-        return 0;
+
+
     }
 
-    // ---------- Print exact OSM footprint ----------
-    std::cout << std::fixed << std::setprecision(8);
+    std::cout
+        << "Total assigned buildings: "
+        << totalAssigned
+        << std::endl;
 
-    std::cout << "Building 0 footprint (exact OSM coordinates)" << std::endl;
-    std::cout << "--------------------------------------------" << std::endl;
+        TilesetWriter tilesetWriter;
 
-    for (size_t i = 0; i < buildings[0].nodeIds.size(); i++)
-    {
-        long long id = buildings[0].nodeIds[i];
-        auto it = nodes.find(id);
+tilesetWriter.writeTileset(
+    tiles,
+    tileElevations,
+    "../output/tileset.json"
+);
 
-        if (it == nodes.end())
-            continue;
-
-        std::cout
-            << i
-            << " | lat=" << it->second.lat
-            << " | lon=" << it->second.lon
-            << std::endl;
-    }
-
-    // ---------- Compute OSM center as origin ----------
-double minLat =  1e30;
-double maxLat = -1e30;
-double minLon =  1e30;
-double maxLon = -1e30;
-
-for (const auto& kv : nodes)
-{
-    minLat = std::min(minLat, kv.second.lat);
-    maxLat = std::max(maxLat, kv.second.lat);
-    minLon = std::min(minLon, kv.second.lon);
-    maxLon = std::max(maxLon, kv.second.lon);
+    return 0;
 }
-
-double originLat = (minLat + maxLat) * 0.5;
-double originLon = (minLon + maxLon) * 0.5;
-
-
-return 0;
-}
-
-// CoordinateConverter converter(originLat, originLon);
-
-// std::cout << "\nOSM center origin: "
-//           << originLat
-//           << ", "
-//           << originLon
-//           << std::endl;
-//     // ---------- Build mesh for ONLY Building 0 ----------
-//     // ---------- Build mesh for first 30 buildings ----------
-// MeshBuilder mesh;
-
-// int exportedCount = 0;
-
-// for (const Building &b : buildings)
-// {
-//     if (exportedCount >= 1000)
-//         break;
-
-
-//     std::vector<Point2D> polygon;
-
-
-//     for (long long id : b.nodeIds)
-//     {
-//         auto it = nodes.find(id);
-
-//         if (it == nodes.end())
-//             continue;
-
-
-//         Point2D p = converter.toLocal(
-//             it->second.lat,
-//             it->second.lon
-//         );
-
-
-//         polygon.push_back(p);
-//     }
-
-
-//     // invalid footprint
-//     if (polygon.size() < 3)
-//         continue;
-
-
-//     double buildingHeight = 10.0;
-
-
-//     if (b.height > 0)
-//         buildingHeight = b.height;
-//     else if (b.levels > 0)
-//         buildingHeight = b.levels * 3.0;
-
-
-//     mesh.appendExtrudedBuilding(
-//         polygon,
-//         buildingHeight
-//     );
-
-
-//     std::cout
-//         << "Added building "
-//         << exportedCount
-//         << std::endl;
-
-
-//     exportedCount++;
-// }
-
-
-// std::cout
-//     << "Total exported buildings: "
-//     << exportedCount
-//     << std::endl;
-
-
-
-// B3DMWriter b3dmWriter;
-
-
-// bool b3dmOK =
-// b3dmWriter.writeB3DM(
-//     "../data/DD3.glb",
-//     "../output/tile.b3dm"
-// );
-
-
-// if(b3dmOK)
-// {
-//     std::cout
-//     << "B3DM created\n";
-// }
-// else
-// {
-//     std::cout
-//     << "B3DM failed\n";
-// }
-
-
-
-// // ---------- Generate tileset.json ----------
-
-// TilesetWriter tilesWriter;
-
-
-// bool tilesOK =
-// tilesWriter.writeTileset(
-//     mesh,
-//     originLat,
-//     originLon,
-//     "../output/tileset.json"
-// );
-
-
-
-// if(tilesOK)
-// {
-//     std::cout
-//     << "tileset.json created\n";
-// }
-// else
-// {
-//     std::cout
-//     << "tileset failed\n";
-// }
-
-//     // ---------- Export OBJ ----------
-//     OBJWriter writer;
-
-//     if (writer.writeOBJ(mesh, "../output/dehra_exact.obj"))
-//     {
-//         std::cout << "\nOBJ written successfully!" << std::endl;
-//         std::cout << "File: ../output/dehra_exact.obj" << std::endl;
-//     }
-//     else
-//     {
-//         std::cout << "\nFailed to write OBJ!" << std::endl;
-//     }
-
-//     return 0;
-// }

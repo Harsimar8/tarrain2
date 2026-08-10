@@ -14,9 +14,8 @@ struct Node
 struct Building
 {
     std::vector<long long> nodeIds;
-
-    double height = -1.0;   // height in meters
-    int levels = -1;        // number of floors
+    double height = -1.0;
+    int levels = -1;
 };
 
 class OsmReader
@@ -30,4 +29,7 @@ public:
 private:
     std::unordered_map<long long, Node> nodes;
     std::vector<Building> buildings;
+
+    // store every way, not only buildings
+    std::unordered_map<long long, std::vector<long long>> wayNodes;
 };
