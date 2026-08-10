@@ -56,19 +56,34 @@ std::vector<Tile> TileBuilder::buildTiles(
     continue;
 }
 
-auto it = nodes.find(buildings[i].nodeIds.front());
+// Compute building centroid from all nodes
+double sumLat = 0.0;
+double sumLon = 0.0;
+int count = 0;
 
-if (it == nodes.end())
+for (long long nodeId : buildings[i].nodeIds)
 {
-    std::cout << "Building " << i
-              << " first node missing: "
-              << buildings[i].nodeIds.front()
-              << std::endl;
+    auto it = nodes.find(nodeId);
+    if (it == nodes.end())
+        continue;
+
+    sumLat += it->second.lat;
+    sumLon += it->second.lon;
+    count++;
+}
+
+if (count == 0)
+{
+    std::cout << "Building " << i << " has no valid nodes" << std::endl;
     continue;
 }
 
-        double dx = (it->second.lon - minLon) * metersPerDegLon;
-        double dy = (it->second.lat - minLat) * metersPerDegLat;
+double centerLat = sumLat / count;
+double centerLon = sumLon / count;
+
+double dx = (centerLon - minLon) * metersPerDegLon;
+double dy = (centerLat - minLat) * metersPerDegLat;
+
 
         int tx = static_cast<int>(std::floor(dx / tileSizeMeters));
         int ty = static_cast<int>(std::floor(dy / tileSizeMeters));

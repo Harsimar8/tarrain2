@@ -68,60 +68,34 @@ bool B3DMWriter::writeB3DM(
 
 
     // -----------------------------
-    // Feature Table
-    // -----------------------------
+// Feature Table
+// -----------------------------
+std::string featureJSON = "{\"BATCH_LENGTH\":0}";
 
-    std::string featureJSON =
-        "{\"BATCH_LENGTH\":0}";
+while (featureJSON.size() % 8 != 0)
+    featureJSON.push_back(' ');
 
+uint32_t featureJSONLength = (uint32_t)featureJSON.size();
+uint32_t featureBinaryLength = 0;
+uint32_t batchJSONLength = 0;
+uint32_t batchBinaryLength = 0;
 
-    size_t featurePadding =
-        getPadding(featureJSON.size());
+// -----------------------------
+// Pad GLB to 8-byte alignment
+// -----------------------------
+while (glb.size() % 8 != 0)
+    glb.push_back(' ');
 
-
-    featureJSON.append(
-        featurePadding,
-        ' '
-    );
-
-
-
-    uint32_t featureJSONLength =
-        static_cast<uint32_t>(
-            featureJSON.size()
-        );
-
-
-    uint32_t featureBinaryLength = 0;
-
-    uint32_t batchJSONLength = 0;
-
-    uint32_t batchBinaryLength = 0;
+uint32_t byteLength =
+    28 +
+    featureJSONLength +
+    featureBinaryLength +
+    batchJSONLength +
+    batchBinaryLength +
+    (uint32_t)glb.size();
 
 
 
-    // -----------------------------
-    // GLB alignment
-    // -----------------------------
-
-    size_t glbPadding =
-        getPadding(glb.size());
-
-
-    uint32_t byteLength =
-        28
-        +
-        featureJSONLength
-        +
-        static_cast<uint32_t>(glb.size())
-        +
-        static_cast<uint32_t>(glbPadding);
-
-
-
-    // -----------------------------
-    // Write B3DM
-    // -----------------------------
 
     std::ofstream out(
         b3dmFile,
@@ -203,13 +177,7 @@ bool B3DMWriter::writeB3DM(
 
     // GLB padding
 
-    if(glbPadding > 0)
-    {
-        writePadding(
-            out,
-            glbPadding
-        );
-    }
+   
 
 
 

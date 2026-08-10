@@ -295,13 +295,23 @@ bool TilesetWriter::writeTileset(
         // the actual GLB vertex bounds.
         // --------------------------------------------------
 
-        out << "        \"boundingVolume\": {\n";
+        // Compute tile bounds from geographic tile size
+double metersPerDegLat = 111320.0;
+double metersPerDegLon = 111320.0 * std::cos(tile.centerLat * PI / 180.0);
 
+double tileWidth  = (tile.maxLon - tile.minLon) * metersPerDegLon;
+double tileHeight = (tile.maxLat - tile.minLat) * metersPerDegLat;
+
+double halfX = tileWidth  * 0.5;
+double halfY = tileHeight * 0.5;
+double halfZ = 500.0;// enough for buildings
+
+out << "        \"boundingVolume\": {\n";
 out << "          \"box\": [";
-out << "0,0,5,";      // center of the box
-out << "200,0,0,";    // half-size X
-out << "0,200,0,";    // half-size Y
-out << "0,0,50";      // half-size Z
+out << "0,0," << halfZ << ",";
+out << halfX << ",0,0,";
+out << "0," << halfY << ",0,";
+out << "0,0," << halfZ;
 out << "]\n";
 out << "        },\n";
 

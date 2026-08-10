@@ -19,31 +19,38 @@ bool GLTFWriter::writeGLB(const MeshBuilder& mesh, const std::string& filename)
     if (vertices.empty() || triangles.empty())
         return false;
 
-    std::vector<float> positions;
-    positions.reserve(vertices.size() * 3);
+   // Compute bounds (keep this for accessor min/max)
+float minX = vertices[0].x;
+float minY = vertices[0].y;
+float minZ = vertices[0].z;
 
-    float minX = vertices[0].x;
-    float minY = vertices[0].y;
-    float minZ = vertices[0].z;
+float maxX = vertices[0].x;
+float maxY = vertices[0].y;
+float maxZ = vertices[0].z;
 
-    float maxX = vertices[0].x;
-    float maxY = vertices[0].y;
-    float maxZ = vertices[0].z;
+for (const auto& v : vertices)
+{
+    minX = std::min(minX, v.x);
+    minY = std::min(minY, v.y);
+    minZ = std::min(minZ, v.z);
 
-    for (const auto& v : vertices)
-    {
-        positions.push_back(v.x);
-        positions.push_back(v.y);
-        positions.push_back(v.z);
+    maxX = std::max(maxX, v.x);
+    maxY = std::max(maxY, v.y);
+    maxZ = std::max(maxZ, v.z);
+}
 
-        minX = std::min(minX, v.x);
-        minY = std::min(minY, v.y);
-        minZ = std::min(minZ, v.z);
+// Export positions WITHOUT centering.
+// Keep local coordinates relative to the tile center.
+// Only convert axes for glTF/Cesium.
+std::vector<float> positions;
+positions.reserve(vertices.size() * 3);
 
-        maxX = std::max(maxX, v.x);
-        maxY = std::max(maxY, v.y);
-        maxZ = std::max(maxZ, v.z);
-    }
+for (const auto& v : vertices)
+{
+    positions.push_back(v.x);   // East
+    positions.push_back(v.z);   // Up
+    positions.push_back(-v.y);  // North
+}
 
     std::vector<unsigned int> indices;
     indices.reserve(triangles.size() * 3);

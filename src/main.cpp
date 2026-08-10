@@ -11,6 +11,7 @@
 #include "MeshBuilder.h"
 #include "B3DMWriter.h"
 #include "TilesetWriter.h"
+#include "iomanip"
 
 
 // --------------------------------------------------
@@ -21,6 +22,7 @@ struct TerrainData
     double tileCenterElevation = 0.0;
     std::unordered_map<int, double> buildingElevations;
 };
+
 
 TerrainData loadTerrainData(const std::string &filename)
 {
@@ -40,18 +42,27 @@ TerrainData loadTerrainData(const std::string &filename)
     std::string text = buffer.str();
 
     std::regex centerRegex(
-        "\\\"tileCenterElevation\\\"\\\\s*:\\\\s*([-0-9.]+)");
+        R"REGEX("tileCenterElevation"\s*:\s*([-0-9.]+))REGEX"
+    );
 
     std::smatch match;
 
     if (std::regex_search(text, match, centerRegex))
+    {
         data.tileCenterElevation = std::stod(match[1]);
+    }
 
+    // FIXED REGEX
     std::regex entryRegex(
-        "\\\"([0-9]+)\\\"\\\\s*:\\\\s*([-0-9.]+)");
+        R"REGEX("([0-9]+)"\s*:\s*([-0-9.]+))REGEX"
+    );
 
     auto begin =
-        std::sregex_iterator(text.begin(), text.end(), entryRegex);
+        std::sregex_iterator(
+            text.begin(),
+            text.end(),
+            entryRegex
+        );
 
     auto end = std::sregex_iterator();
 
@@ -65,6 +76,7 @@ TerrainData loadTerrainData(const std::string &filename)
 
     return data;
 }
+
 
 int main()
 {
@@ -115,8 +127,10 @@ int main()
 {
     std::cout << "==============================" << std::endl;
     std::cout << "Tile " << tileIndex << std::endl;
+    std::cout << std::fixed << std::setprecision(8);
     std::cout << "Tile center lat: " << tile.centerLat << std::endl;
     std::cout << "Tile center lon: " << tile.centerLon << std::endl;
+    std::cout << "Tile center elevation: " << terrain.tileCenterElevation << std::endl;
     std::cout << "Buildings in tile: " << tile.buildingIndices.size() << std::endl;
 }
         MeshBuilder mesh;
