@@ -65,7 +65,7 @@ bool OsmReader::load(const std::string& filename)
         {
             inWay = true;
             currentWayId = std::stoll(match[1]);
-
+            current.id = currentWayId;
             current.nodeIds.clear();
             current.height = -1.0;
             current.levels = -1;

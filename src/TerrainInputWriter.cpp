@@ -33,7 +33,7 @@ void writeTileTerrainInput(
         firstBuilding = false;
 
         out << "    {\n";
-        out << "      \"id\": " << buildingIndex << ",\n";
+        out << "      \"id\": " << b.id << ",\n";
         out << "      \"nodes\": [\n";
 
         bool firstNode = true;

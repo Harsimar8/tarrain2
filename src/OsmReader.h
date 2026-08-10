@@ -13,7 +13,10 @@ struct Node
 
 struct Building
 {
+    long long id = 0;
+
     std::vector<long long> nodeIds;
+
     double height = -1.0;
     int levels = -1;
 };

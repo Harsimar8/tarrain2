@@ -97,6 +97,7 @@ int main()
     std::cout << "Total buildings: " << buildings.size() << std::endl;
     std::cout << "Total tiles: " << tiles.size() << std::endl;
 
+    
     size_t totalAssigned = 0;
     std::vector<double> tileElevations(tiles.size(), 0.0);
 
@@ -177,15 +178,34 @@ if (tileIndex == 538 && polygon.size() == 1)
 
             double buildingTerrain = terrain.tileCenterElevation;
 
-            auto e =
-                terrain.buildingElevations.find(buildingIndex);
+            auto e = terrain.buildingElevations.find(b.id);
 
-            if (e != terrain.buildingElevations.end())
-                buildingTerrain = e->second;
+
+            if (tileIndex == 538)
+{
+    std::cout << "Vector index = " << buildingIndex
+              << ", OSM ID = " << b.id
+              << ", found = "
+              << (e != terrain.buildingElevations.end() ? "YES" : "NO")
+              << std::endl;
+}
+
+if (e != terrain.buildingElevations.end())
+    buildingTerrain = e->second;
 
             double shiftedTerrain =
                 buildingTerrain -
                 terrain.tileCenterElevation;
+
+                if (tileIndex == 538)
+{
+    std::cout << "Building " << buildingIndex
+              << " terrain = " << buildingTerrain
+              << ", tile terrain = " << terrain.tileCenterElevation
+              << ", shifted = " << shiftedTerrain
+              << ", height = " << h
+              << std::endl;
+}
 
             mesh.appendExtrudedBuilding(
                 polygon,
